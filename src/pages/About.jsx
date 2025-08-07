@@ -21,7 +21,7 @@ export default function About() {
           {/* Text */}
           <div className="mt-16">
             {/* Heading */}
-            <h1 className="text-2xl leading-relaxed">
+            <h1 className="text-2xl leading-relaxed md:text-3xl">
               Hey, I'm{" "}
               <span className="font-bold tracking-wide uppercase">
                 Wilhelmus Ole
@@ -106,11 +106,12 @@ export default function About() {
       </div>
 
       {/* LINE */}
-      <div className="bg-border-light my-24 h-0.5"></div>
+      <div className="bg-border-light my-24 h-0.5 md:my-32"></div>
 
+      {/* SERVICES */}
       <div className="flex flex-wrap gap-20">
         {/* Card */}
-        <div className="border-border-light mx-auto w-10/12 rounded-lg border-1 p-7">
+        <div className="border-border-light mx-auto w-10/12 max-w-md rounded-lg border-1 p-7">
           {/* image */}
           <div className="h-72 rounded-lg bg-slate-50"></div>
           {/* description */}
@@ -144,7 +145,41 @@ export default function About() {
         </div>
 
         {/* Card */}
-        <div className="border-border-light mx-auto w-10/12 rounded-lg border-1 p-7">
+        <div className="border-border-light mx-auto w-10/12 max-w-md rounded-lg border-1 p-7">
+          {/* image */}
+          <div className="h-72 rounded-lg bg-slate-50"></div>
+          {/* description */}
+          <div className="mt-10 flex flex-col gap-5">
+            <h2 className="text-2xl font-bold capitalize">Web automation</h2>
+            <p className="text-font-light leading-relaxed font-extralight">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
+              rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores
+              corporis?
+            </p>
+
+            {/* Check list */}
+            <div className="flex flex-col gap-3 capitalize">
+              {/* Item */}
+              <div className="flex items-center gap-3">
+                <div className="">
+                  <FontAwesomeIcon icon={faCheck} className="text-lg" />
+                </div>
+                <p className="text-font-light">Task automation</p>
+              </div>
+
+              {/* Item */}
+              <div className="flex items-center gap-3">
+                <div className="">
+                  <FontAwesomeIcon icon={faCheck} className="text-lg" />
+                </div>
+                <p className="text-font-light">Efficiency tools</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Card */}
+        <div className="border-border-light mx-auto w-10/12 max-w-md rounded-lg border-1 p-7">
           {/* image */}
           <div className="h-72 rounded-lg bg-slate-50"></div>
           {/* description */}
@@ -179,7 +214,7 @@ export default function About() {
       </div>
 
       {/* LINE */}
-      <div className="bg-border-light my-24 h-0.5"></div>
+      <div className="bg-border-light my-24 h-0.5 md:my-32"></div>
 
       <div className="container mx-auto mt-36 w-10/12 max-w-2xl py-5">
         <h2 className="mb-16 text-center text-xl leading-relaxed">
@@ -194,19 +229,19 @@ export default function About() {
 
             <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
               {/* item */}
-              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3 md:w-1/3 lg:w-1/4">
+              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3">
                 <div className="h-8 w-8 rounded-md bg-red-200"></div>
                 <p className="text-sm">Typescript</p>
               </div>
 
               {/* item */}
-              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3 md:w-1/3 lg:w-1/4">
+              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3">
                 <div className="h-8 w-8 rounded-md bg-red-200"></div>
                 <p className="text-sm">Typescript</p>
               </div>
 
               {/* item */}
-              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3 md:w-1/3 lg:w-1/4">
+              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3">
                 <div className="h-8 w-8 rounded-md bg-red-200"></div>
                 <p className="text-sm">Typescript</p>
               </div>
@@ -220,19 +255,19 @@ export default function About() {
 
             <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
               {/* item */}
-              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3 md:w-1/3 lg:w-1/4">
+              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3">
                 <div className="h-8 w-8 rounded-md bg-red-200"></div>
                 <p className="text-sm">Typescript</p>
               </div>
 
               {/* item */}
-              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3 md:w-1/3 lg:w-1/4">
+              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3">
                 <div className="h-8 w-8 rounded-md bg-red-200"></div>
                 <p className="text-sm">Typescript</p>
               </div>
 
               {/* item */}
-              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3 md:w-1/3 lg:w-1/4">
+              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3">
                 <div className="h-8 w-8 rounded-md bg-red-200"></div>
                 <p className="text-sm">Typescript</p>
               </div>
