@@ -1,7 +1,7 @@
 import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 import Navigator from "@components/Navigator";
 
@@ -10,7 +10,7 @@ export default function About() {
     <>
       <Navigator />
 
-      <div className="container mx-auto mt-36 w-10/12 max-w-2xl py-5">
+      <div className="container mx-auto mt-32 w-10/12 max-w-2xl py-5">
         {/* group 1 */}
         <div className="">
           {/* Circle */}
@@ -19,7 +19,7 @@ export default function About() {
           </div>
 
           {/* Text */}
-          <div className="mt-10">
+          <div className="mt-16">
             {/* Heading */}
             <h1 className="text-2xl leading-relaxed">
               Hey, I'm{" "}
@@ -188,8 +188,35 @@ export default function About() {
 
         <div className="mt-10 flex flex-col gap-10">
           {/* Item */}
+          {/* WEB DEV */}
           <div className="">
             <h3 className="font-light uppercase">Web development</h3>
+
+            <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
+              {/* item */}
+              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3 md:w-1/3 lg:w-1/4">
+                <div className="h-8 w-8 rounded-md bg-red-200"></div>
+                <p className="text-sm">Typescript</p>
+              </div>
+
+              {/* item */}
+              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3 md:w-1/3 lg:w-1/4">
+                <div className="h-8 w-8 rounded-md bg-red-200"></div>
+                <p className="text-sm">Typescript</p>
+              </div>
+
+              {/* item */}
+              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3 md:w-1/3 lg:w-1/4">
+                <div className="h-8 w-8 rounded-md bg-red-200"></div>
+                <p className="text-sm">Typescript</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Item */}
+          {/* WEB DES */}
+          <div className="">
+            <h3 className="font-light uppercase">Web Designer</h3>
 
             <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
               {/* item */}
@@ -214,30 +241,69 @@ export default function About() {
         </div>
       </div>
 
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      {/* LINE */}
+      <div className="bg-border-light my-24 h-0.5"></div>
+
+      {/* WORK EXPERIENCE */}
+      <div className="container mx-auto mt-36 w-10/12 max-w-2xl bg-red-100">
+        {/* LEFT */}
+        <div className="border-light-white border-1 bg-black py-32 text-center">
+          <h2 className="text-2xl font-semibold uppercase">Work experience</h2>
+        </div>
+        {/* RIGHT */}
+        <div className="border-light-white border-1 bg-black p-4 py-10">
+          <div className="flex flex-col gap-5">
+            {/* Item */}
+            <div className="border-light-white flex items-center justify-between rounded-md border-1 p-4">
+              <div className="flex flex-col gap-2">
+                <h3>Freelance Web Developer</h3>
+                <p className="text-xs text-gray-400">Jan 2023 - Mar 2024</p>
+              </div>
+              <div className="">
+                <FontAwesomeIcon icon={faChevronDown} className="text-lg" />
+              </div>
+            </div>
+            {/* Item */}
+            <div className="border-light-white flex items-center justify-between rounded-md border-1 p-4">
+              <div className="flex flex-col gap-2">
+                <h3>Freelance Web Developer</h3>
+                <p className="text-xs text-gray-400">Jan 2023 - Mar 2024</p>
+              </div>
+              <div className="">
+                <FontAwesomeIcon icon={faChevronDown} className="text-lg" />
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-32 text-center">
+            <p className="mb-2">Help me to add more?</p>
+            <div className="mx-auto w-fit rounded-lg bg-white px-4 py-2 text-black uppercase">
+              Get in touch
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* OUTRO */}
+      <div className="mx-auto my-52 flex w-10/12 max-w-2xl flex-col gap-3 leading-relaxed font-extralight tracking-wider">
+        <p>
+          Halo, thank you for the visit! I'm so glad you made it to this
+          section. If you're interested in working together, have a question, or
+          just want to say hi, feel free to reach out! I'm always open to new
+          projects, ideas, or opportunities. Drop me an email, and I’ll respond
+          as soon as I can.
+        </p>
+
+        <div className="mt-10">
+          <p className="uppercase">get in touch (Click to copy)</p>
+          <p className="text-[clamp(1.3rem,3vw,2.5rem)] font-bold text-white">
+            wilhelmus.olejr@gmail.com
+          </p>
+        </div>
+      </div>
+
+      {/* FOOTER */}
+      <footer className="container mx-auto my-14 h-52 w-10/12 rounded-md"></footer>
     </>
   );
 }

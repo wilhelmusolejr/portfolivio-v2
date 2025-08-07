@@ -71,7 +71,7 @@ function App() {
           well, and are easy to use. When I have free time, I like to find ways
           to improve my work.
         </p>
-        <a href="/" className="font-semibold uppercase">
+        <a href="/about" className="font-semibold uppercase">
           More about me
         </a>
       </div>
