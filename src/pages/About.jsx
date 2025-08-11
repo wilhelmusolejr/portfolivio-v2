@@ -255,7 +255,7 @@ export default function About() {
           </h2>
         </div>
         {/* RIGHT */}
-        <div className="border-border-superlight border-1 bg-black px-4 py-10 md:px-10">
+        <div className="border-border-superlight flex h-[60vh] flex-col justify-between border-1 bg-black px-4 py-10 md:px-10">
           <div className="flex flex-col gap-5">
             {/* Item */}
             <WorkItem
@@ -270,7 +270,7 @@ export default function About() {
             />
           </div>
 
-          <div className="mt-32 text-center">
+          <div className="text-center">
             <p className="mb-2">Help me to add more?</p>
             <div className="mx-auto w-fit rounded-lg bg-white px-4 py-2 text-black uppercase">
               Get in touch
@@ -291,7 +291,7 @@ export default function About() {
 
         <div className="mt-10">
           <p className="uppercase">get in touch (Click to copy)</p>
-          <p className="text-[clamp(1.3rem,3vw,2.5rem)] font-bold text-white">
+          <p className="text-2xl font-bold text-white md:text-4xl">
             wilhelmus.olejr@gmail.com
           </p>
         </div>
