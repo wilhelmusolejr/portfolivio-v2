@@ -1,13 +1,14 @@
 import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import Navigator from "@components/Navigator";
 import TechItem from "../components/TechItem";
 import TechHeading from "../components/TechHeading";
 import TechItemParent from "../components/TechItemParent";
 import SectionLine from "../components/SectionLine";
+import WorkItem from "../components/WorkItem";
 
 export default function About() {
   return (
@@ -264,28 +265,19 @@ export default function About() {
           </h2>
         </div>
         {/* RIGHT */}
-        <div className="border-border-superlight border-1 bg-black p-4 py-10">
+        <div className="border-border-superlight border-1 bg-black px-4 py-10 md:px-10">
           <div className="flex flex-col gap-5">
             {/* Item */}
-            <div className="border-light-white bg-lightdark flex items-center justify-between rounded-md border-1 p-4">
-              <div className="flex flex-col gap-2">
-                <h3>Freelance Web Developer</h3>
-                <p className="text-xs text-gray-400">Jan 2023 - Mar 2024</p>
-              </div>
-              <div className="">
-                <FontAwesomeIcon icon={faChevronDown} className="text-lg" />
-              </div>
-            </div>
+            <WorkItem
+              workName="Freelance Web Developer"
+              workDate="Jan 2023 - Mar 2024"
+            />
+
             {/* Item */}
-            <div className="border-light-white bg-lightdark flex items-center justify-between rounded-md border-1 p-4">
-              <div className="flex flex-col gap-2">
-                <h3>Freelance Web Developer</h3>
-                <p className="text-xs text-gray-400">Jan 2023 - Mar 2024</p>
-              </div>
-              <div className="">
-                <FontAwesomeIcon icon={faChevronDown} className="text-lg" />
-              </div>
-            </div>
+            <WorkItem
+              workName="Freelance Web Developer"
+              workDate="Jan 2023 - Mar 2024"
+            />
           </div>
 
           <div className="mt-32 text-center">
