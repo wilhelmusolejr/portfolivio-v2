@@ -9,6 +9,7 @@ import TechHeading from "../components/TechHeading";
 import TechItemParent from "../components/TechItemParent";
 import SectionLine from "../components/SectionLine";
 import WorkItem from "../components/WorkItem";
+import InterestItem from "../components/InterestItem";
 
 export default function About() {
   return (
@@ -35,7 +36,7 @@ export default function About() {
             </h1>
 
             {/* Paragraph */}
-            <p className="text-font-light mt-10 text-lg leading-loose font-extralight">
+            <p className="text-font-light mt-10 text-lg leading-relaxed font-extralight">
               I'm an self-taught Junior Full-Stack Web Developer focused on
               building modern, clean, responsive, and functional websites. I
               also have experience in web automation and web design.
@@ -51,30 +52,19 @@ export default function About() {
             <h2>I'm interested in</h2>
 
             {/* Parent */}
-            <div className="mt-5 flex flex-col flex-wrap gap-3 font-light capitalize">
+            <div className="mt-5 flex flex-wrap gap-3 font-light capitalize lg:flex-nowrap">
               {/* Item */}
-              <div className="bg-dark-gray border-light-white w-fit rounded-md border-1 p-3">
-                Front-end web development
-              </div>
-              {/* Item */}
-              <div className="bg-dark-gray border-light-white w-fit rounded-md border-1 p-3">
-                Bot Development
-              </div>
-              {/* Item */}
-              <div className="bg-dark-gray border-light-white w-fit rounded-md border-1 p-3">
-                Web Design
-              </div>
-              {/* Item */}
-              <div className="bg-dark-gray border-light-white w-fit rounded-md border-1 p-3">
-                Machine learning
-              </div>
+              <InterestItem interestName="Web Development" />
+              <InterestItem interestName="Bot Development" />
+              <InterestItem interestName="Web Design" />
+              <InterestItem interestName="Machine learning" />
             </div>
 
             <div className="bg-border-light my-16 h-0.5 w-9/12"></div>
           </div>
 
           {/* Paragraphs */}
-          <div className="text-font-light mt-10 flex flex-col gap-10 leading-loose">
+          <div className="text-font-light mt-10 flex flex-col gap-6 leading-relaxed">
             <p className="font-extralight">
               Kamusta! I’m a recent graduate with a degree in Computer Science.
               During my studies, I developed strong programming skills and
@@ -290,7 +280,7 @@ export default function About() {
       </div>
 
       {/* OUTRO */}
-      <div className="mx-auto my-52 flex w-10/12 max-w-2xl flex-col gap-3 leading-relaxed font-extralight tracking-wider">
+      <div className="mx-auto my-52 flex w-10/12 max-w-2xl flex-col gap-3 leading-relaxed font-extralight">
         <p>
           Halo, thank you for the visit! I'm so glad you made it to this
           section. If you're interested in working together, have a question, or
