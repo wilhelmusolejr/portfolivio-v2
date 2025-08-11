@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 import Navigator from "@components/Navigator";
+import TechItem from "../components/TechItem";
+import TechHeading from "../components/TechHeading";
+import TechItemParent from "../components/TechItemParent";
 
 export default function About() {
   return (
@@ -21,7 +24,7 @@ export default function About() {
           {/* Text */}
           <div className="mt-16">
             {/* Heading */}
-            <h1 className="text-2xl leading-relaxed md:text-3xl">
+            <h1 className="w-10/12 text-2xl leading-relaxed md:text-4xl">
               Hey, I'm{" "}
               <span className="font-bold tracking-wide uppercase">
                 Wilhelmus Ole
@@ -38,6 +41,7 @@ export default function About() {
           </div>
         </div>
 
+        {/* INTEREST */}
         {/* group 2 */}
         <div className="">
           {/* Interest */}
@@ -45,7 +49,7 @@ export default function About() {
             <h2>I'm interested in</h2>
 
             {/* Parent */}
-            <div className="mt-5 flex flex-col gap-3 font-light capitalize">
+            <div className="mt-5 flex flex-col flex-wrap gap-3 font-light capitalize">
               {/* Item */}
               <div className="bg-dark-gray border-light-white w-fit rounded-md border-1 p-3">
                 Front-end web development
@@ -216,62 +220,36 @@ export default function About() {
       {/* LINE */}
       <div className="bg-border-light my-24 h-0.5 md:my-32"></div>
 
+      {/* TECHNOLOGIES */}
       <div className="container mx-auto mt-36 w-10/12 max-w-2xl py-5">
-        <h2 className="mb-16 text-center text-xl leading-relaxed">
+        <h2 className="mb-16 text-center text-xl leading-relaxed md:mx-auto md:w-10/12 md:text-2xl">
           Below are the technologies I have worked with and am still learning
         </h2>
 
         <div className="mt-10 flex flex-col gap-10">
-          {/* Item */}
           {/* WEB DEV */}
           <div className="">
-            <h3 className="font-light uppercase">Web development</h3>
+            <TechHeading heading="Web development" />
 
-            <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
+            <TechItemParent>
               {/* item */}
-              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3">
-                <div className="h-8 w-8 rounded-md bg-red-200"></div>
-                <p className="text-sm">Typescript</p>
-              </div>
-
-              {/* item */}
-              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3">
-                <div className="h-8 w-8 rounded-md bg-red-200"></div>
-                <p className="text-sm">Typescript</p>
-              </div>
-
-              {/* item */}
-              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3">
-                <div className="h-8 w-8 rounded-md bg-red-200"></div>
-                <p className="text-sm">Typescript</p>
-              </div>
-            </div>
+              <TechItem techName="Typescript" color="bg-red-200" />
+              <TechItem techName="HTML" color="bg-blue-200" />
+              <TechItem techName="JavaScript" color="bg-yellow-200" />
+            </TechItemParent>
           </div>
 
-          {/* Item */}
           {/* WEB DES */}
           <div className="">
-            <h3 className="font-light uppercase">Web Designer</h3>
+            <TechHeading heading="Web Designer" />
 
-            <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
+            <TechItemParent>
               {/* item */}
-              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3">
-                <div className="h-8 w-8 rounded-md bg-red-200"></div>
-                <p className="text-sm">Typescript</p>
-              </div>
-
-              {/* item */}
-              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3">
-                <div className="h-8 w-8 rounded-md bg-red-200"></div>
-                <p className="text-sm">Typescript</p>
-              </div>
-
-              {/* item */}
-              <div className="border-border-light flex items-center gap-2 rounded-md border-1 p-3">
-                <div className="h-8 w-8 rounded-md bg-red-200"></div>
-                <p className="text-sm">Typescript</p>
-              </div>
-            </div>
+              <TechItem techName="Typescript" color="bg-red-200" />
+              <TechItem techName="HTML" color="bg-blue-200" />
+              <TechItem techName="JavaScript" color="bg-yellow-200" />
+              <TechItem techName="Typescript" color="bg-red-200" />
+            </TechItemParent>
           </div>
         </div>
       </div>
@@ -282,14 +260,16 @@ export default function About() {
       {/* WORK EXPERIENCE */}
       <div className="container mx-auto mt-36 w-10/12 max-w-2xl bg-red-100">
         {/* LEFT */}
-        <div className="border-light-white border-1 bg-black py-32 text-center">
-          <h2 className="text-2xl font-semibold uppercase">Work experience</h2>
+        <div className="border-border-superlight flex h-[40vh] items-center justify-center border-1 bg-black text-center">
+          <h2 className="text-2xl font-semibold uppercase md:text-3xl">
+            Work experience
+          </h2>
         </div>
         {/* RIGHT */}
-        <div className="border-light-white border-1 bg-black p-4 py-10">
+        <div className="border-border-superlight border-1 bg-black p-4 py-10">
           <div className="flex flex-col gap-5">
             {/* Item */}
-            <div className="border-light-white flex items-center justify-between rounded-md border-1 p-4">
+            <div className="border-light-white bg-lightdark flex items-center justify-between rounded-md border-1 p-4">
               <div className="flex flex-col gap-2">
                 <h3>Freelance Web Developer</h3>
                 <p className="text-xs text-gray-400">Jan 2023 - Mar 2024</p>
@@ -299,7 +279,7 @@ export default function About() {
               </div>
             </div>
             {/* Item */}
-            <div className="border-light-white flex items-center justify-between rounded-md border-1 p-4">
+            <div className="border-light-white bg-lightdark flex items-center justify-between rounded-md border-1 p-4">
               <div className="flex flex-col gap-2">
                 <h3>Freelance Web Developer</h3>
                 <p className="text-xs text-gray-400">Jan 2023 - Mar 2024</p>

@@ -8,6 +8,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        {/* project */}
+        {/* actual project */}
+        {/* resume */}
       </Routes>
     </Router>
   );

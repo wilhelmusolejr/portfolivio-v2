@@ -11,6 +11,8 @@
   --color-light-white: #4c4c4c;
   --color-font-light: #e0e0e0;
   --color-border-light: #202020;
+  --color-border-superlight: #1a1a1a;
+  --color-lightdark: #171717;
 }
 
 html body #root {
