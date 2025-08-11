@@ -7,6 +7,7 @@ import Navigator from "@components/Navigator";
 import TechItem from "../components/TechItem";
 import TechHeading from "../components/TechHeading";
 import TechItemParent from "../components/TechItemParent";
+import SectionLine from "../components/SectionLine";
 
 export default function About() {
   return (
@@ -109,8 +110,7 @@ export default function About() {
         </div>
       </div>
 
-      {/* LINE */}
-      <div className="bg-border-light my-24 h-0.5 md:my-32"></div>
+      <SectionLine />
 
       {/* SERVICES */}
       <div className="flex flex-wrap gap-20">
@@ -217,16 +217,15 @@ export default function About() {
         </div>
       </div>
 
-      {/* LINE */}
-      <div className="bg-border-light my-24 h-0.5 md:my-32"></div>
+      <SectionLine />
 
       {/* TECHNOLOGIES */}
       <div className="container mx-auto mt-36 w-10/12 max-w-2xl py-5">
-        <h2 className="mb-16 text-center text-xl leading-relaxed md:mx-auto md:w-10/12 md:text-2xl">
+        <h2 className="mb-24 text-center text-xl leading-relaxed md:mx-auto md:w-10/12 md:text-2xl">
           Below are the technologies I have worked with and am still learning
         </h2>
 
-        <div className="mt-10 flex flex-col gap-10">
+        <div className="mt-10 flex flex-col gap-12">
           {/* WEB DEV */}
           <div className="">
             <TechHeading heading="Web development" />
@@ -254,8 +253,7 @@ export default function About() {
         </div>
       </div>
 
-      {/* LINE */}
-      <div className="bg-border-light my-24 h-0.5"></div>
+      <SectionLine />
 
       {/* WORK EXPERIENCE */}
       <div className="container mx-auto mt-36 w-10/12 max-w-2xl bg-red-100">
