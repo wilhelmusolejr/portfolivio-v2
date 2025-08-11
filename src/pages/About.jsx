@@ -16,18 +16,18 @@ export default function About() {
     <>
       <Navigator />
 
-      <div className="container mx-auto mt-32 w-10/12 max-w-2xl py-5">
+      <div className="container mx-auto mt-32 w-10/12 py-5">
         {/* group 1 */}
-        <div className="">
+        <div className="flex flex-col gap-5 lg:flex-row">
           {/* Circle */}
-          <div className="mx-auto flex w-10/12 items-center justify-center">
+          <div className="mx-auto flex w-3/12 items-center justify-center">
             <div className="h-56 w-56 rounded-full bg-slate-200"></div>
           </div>
 
           {/* Text */}
-          <div className="mt-16">
+          <div className="mt-16 lg:mt-0 lg:w-9/12">
             {/* Heading */}
-            <h1 className="w-10/12 text-2xl leading-relaxed md:text-4xl">
+            <h1 className="w-10/12 text-2xl leading-relaxed md:text-4xl lg:w-full">
               Hey, I'm{" "}
               <span className="font-bold tracking-wide uppercase">
                 Wilhelmus Ole
@@ -41,30 +41,32 @@ export default function About() {
               building modern, clean, responsive, and functional websites. I
               also have experience in web automation and web design.
             </p>
+
+            <div className="bg-border-light my-10 hidden h-0.5 w-9/12 lg:block"></div>
           </div>
         </div>
 
         {/* INTEREST */}
         {/* group 2 */}
-        <div className="">
+        <div className="flex flex-col gap-5 lg:flex-row">
           {/* Interest */}
-          <div className="mt-16">
+          <div className="mt-16 lg:mt-0 lg:w-3/12">
             <h2>I'm interested in</h2>
 
             {/* Parent */}
-            <div className="mt-5 flex flex-wrap gap-3 font-light capitalize lg:flex-nowrap">
+            <div className="mt-5 flex flex-wrap gap-3 font-light capitalize">
               {/* Item */}
               <InterestItem interestName="Web Development" />
               <InterestItem interestName="Bot Development" />
               <InterestItem interestName="Web Design" />
               <InterestItem interestName="Machine learning" />
             </div>
-
-            <div className="bg-border-light my-16 h-0.5 w-9/12"></div>
           </div>
 
+          <div className="bg-border-light my-10 hidden h-0.5 w-9/12"></div>
+
           {/* Paragraphs */}
-          <div className="text-font-light mt-10 flex flex-col gap-6 leading-relaxed">
+          <div className="text-font-light flex flex-col gap-6 leading-relaxed lg:mt-0 lg:w-8/12">
             <p className="font-extralight">
               Kamusta! I’m a recent graduate with a degree in Computer Science.
               During my studies, I developed strong programming skills and
