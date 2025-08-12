@@ -1,8 +1,5 @@
 import React from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-
 import Navigator from "@components/Navigator";
 import TechItem from "../components/TechItem";
 import TechHeading from "../components/TechHeading";
@@ -10,6 +7,7 @@ import TechItemParent from "../components/TechItemParent";
 import SectionLine from "../components/SectionLine";
 import WorkItem from "../components/WorkItem";
 import InterestItem from "../components/InterestItem";
+import ServiceItem from "../components/ServiceItem";
 
 export default function About() {
   return (
@@ -106,107 +104,34 @@ export default function About() {
       <SectionLine />
 
       {/* SERVICES */}
-      <div className="flex flex-wrap gap-20">
-        {/* Card */}
-        <div className="border-border-light mx-auto w-10/12 max-w-md rounded-lg border-1 p-7">
-          {/* image */}
-          <div className="h-72 rounded-lg bg-slate-50"></div>
-          {/* description */}
-          <div className="mt-10 flex flex-col gap-5">
-            <h2 className="text-2xl font-bold capitalize">Web automation</h2>
-            <p className="text-font-light leading-relaxed font-extralight">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
-              rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores
-              corporis?
-            </p>
+      <div className="container mx-auto w-10/12">
+        <div className="flex flex-wrap items-center justify-center gap-10">
+          {/* Card */}
+          <ServiceItem
+            data={{
+              title: "Web Development",
+              description:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores corporis?",
+            }}
+          />
 
-            {/* Check list */}
-            <div className="flex flex-col gap-3 capitalize">
-              {/* Item */}
-              <div className="flex items-center gap-3">
-                <div className="">
-                  <FontAwesomeIcon icon={faCheck} className="text-lg" />
-                </div>
-                <p className="text-font-light">Task automation</p>
-              </div>
+          {/* Card */}
+          <ServiceItem
+            data={{
+              title: "Web Designer",
+              description:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores corporis?",
+            }}
+          />
 
-              {/* Item */}
-              <div className="flex items-center gap-3">
-                <div className="">
-                  <FontAwesomeIcon icon={faCheck} className="text-lg" />
-                </div>
-                <p className="text-font-light">Efficiency tools</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Card */}
-        <div className="border-border-light mx-auto w-10/12 max-w-md rounded-lg border-1 p-7">
-          {/* image */}
-          <div className="h-72 rounded-lg bg-slate-50"></div>
-          {/* description */}
-          <div className="mt-10 flex flex-col gap-5">
-            <h2 className="text-2xl font-bold capitalize">Web automation</h2>
-            <p className="text-font-light leading-relaxed font-extralight">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
-              rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores
-              corporis?
-            </p>
-
-            {/* Check list */}
-            <div className="flex flex-col gap-3 capitalize">
-              {/* Item */}
-              <div className="flex items-center gap-3">
-                <div className="">
-                  <FontAwesomeIcon icon={faCheck} className="text-lg" />
-                </div>
-                <p className="text-font-light">Task automation</p>
-              </div>
-
-              {/* Item */}
-              <div className="flex items-center gap-3">
-                <div className="">
-                  <FontAwesomeIcon icon={faCheck} className="text-lg" />
-                </div>
-                <p className="text-font-light">Efficiency tools</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Card */}
-        <div className="border-border-light mx-auto w-10/12 max-w-md rounded-lg border-1 p-7">
-          {/* image */}
-          <div className="h-72 rounded-lg bg-slate-50"></div>
-          {/* description */}
-          <div className="mt-10 flex flex-col gap-5">
-            <h2 className="text-2xl font-bold capitalize">Web automation</h2>
-            <p className="text-font-light leading-relaxed font-extralight">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
-              rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores
-              corporis?
-            </p>
-
-            {/* Check list */}
-            <div className="flex flex-col gap-3 capitalize">
-              {/* Item */}
-              <div className="flex items-center gap-3">
-                <div className="">
-                  <FontAwesomeIcon icon={faCheck} className="text-lg" />
-                </div>
-                <p className="text-font-light">Task automation</p>
-              </div>
-
-              {/* Item */}
-              <div className="flex items-center gap-3">
-                <div className="">
-                  <FontAwesomeIcon icon={faCheck} className="text-lg" />
-                </div>
-                <p className="text-font-light">Efficiency tools</p>
-              </div>
-            </div>
-          </div>
+          {/* Card */}
+          <ServiceItem
+            data={{
+              title: "Web Automation",
+              description:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores corporis?",
+            }}
+          />
         </div>
       </div>
 
