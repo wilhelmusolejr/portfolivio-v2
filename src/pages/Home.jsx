@@ -64,14 +64,14 @@ function App() {
       </div>
 
       {/* OUTRO */}
-      <div className="mx-auto my-52 flex w-10/12 max-w-2xl flex-col gap-3 leading-relaxed font-extralight tracking-wider">
+      <div className="mx-auto my-52 flex w-10/12 max-w-2xl flex-col gap-3 leading-relaxed font-extralight">
         <p>
           Aloha, I'm an self-taught Junior Full-Stack Web Developer and Computer
           Science student. I create websites that look good, feel good, work
           well, and are easy to use. When I have free time, I like to find ways
           to improve my work.
         </p>
-        <a href="/about" className="font-semibold uppercase">
+        <a href="/about" className="w-fit font-semibold uppercase">
           More about me
         </a>
       </div>
