@@ -138,8 +138,8 @@ export default function About() {
       <SectionLine />
 
       {/* TECHNOLOGIES */}
-      <div className="container mx-auto mt-36 w-10/12 max-w-2xl py-5">
-        <h2 className="mb-24 text-center text-xl leading-relaxed md:mx-auto md:w-10/12 md:text-2xl">
+      <div className="container mx-auto mt-36 w-10/12 py-5">
+        <h2 className="mb-24 max-w-lg text-center text-xl leading-relaxed md:mx-auto md:w-10/12 md:text-2xl">
           Below are the technologies I have worked with and am still learning
         </h2>
 
@@ -174,7 +174,7 @@ export default function About() {
       <SectionLine />
 
       {/* WORK EXPERIENCE */}
-      <div className="container mx-auto mt-36 w-10/12 max-w-2xl bg-red-100">
+      <div className="container mx-auto mt-36 w-10/12 bg-red-100">
         {/* LEFT */}
         <div className="border-border-superlight flex h-[40vh] items-center justify-center border-1 bg-black text-center">
           <h2 className="text-2xl font-semibold uppercase md:text-3xl">
