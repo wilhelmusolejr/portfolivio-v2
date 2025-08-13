@@ -36,7 +36,7 @@ export default function About() {
         {/* group 1 */}
         <div className="flex flex-col gap-10 lg:flex-row">
           {/* Circle */}
-          <div className="w-3//12 w-h-full mx-auto flex items-center">
+          <div className="w-h-full mx-auto flex items-center lg:w-3/12">
             <div className="h-60 w-60 rounded-full bg-slate-200"></div>
           </div>
 
@@ -83,7 +83,7 @@ export default function About() {
 
           {/* Paragraphs */}
           <div className="text-font-light leading-relaxed lg:mt-0 lg:w-9/12">
-            <div className="w-10//12 flex flex-col gap-6">
+            <div className="flex flex-col gap-6 lg:w-10/12">
               {/* items */}
               <p className="font-extralight">
                 Kamusta! I’m a recent graduate with a degree in Computer
@@ -179,15 +179,15 @@ export default function About() {
 
       {/* WORK EXPERIENCE */}
       <div className="container mx-auto mt-36 w-10/12 max-w-5xl bg-red-100">
-        <div className="flex flex-col">
+        <div className="flex flex-col lg:flex-row">
           {/* LEFT */}
-          <div className="border-border-superlight w-6//12 flex h-[40vh] w-full items-center justify-center border-1 bg-black text-center lg:h-[60vh]">
+          <div className="border-border-superlight flex h-[40vh] w-full items-center justify-center border-1 bg-black text-center lg:h-[60vh]">
             <h2 className="text-2xl font-semibold uppercase md:text-3xl">
               Work experience
             </h2>
           </div>
           {/* RIGHT */}
-          <div className="border-border-superlight w-6//12 flex h-[60vh] w-full flex-col justify-between border-1 bg-black px-4 py-10 md:px-5">
+          <div className="border-border-superlight flex h-[60vh] w-full flex-col justify-between border-1 bg-black px-4 py-10 md:px-5">
             <div className="flex flex-col gap-5">
               {/* Item */}
               <WorkItem
