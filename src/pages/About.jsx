@@ -10,49 +10,67 @@ import InterestItem from "../components/InterestItem";
 import ServiceItem from "../components/ServiceItem";
 
 export default function About() {
+  let servicesData = [
+    {
+      title: "Web Development",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores corporis?",
+    },
+    {
+      title: "Web Designer",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores corporis?",
+    },
+    {
+      title: "Web Automation",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores corporis?",
+    },
+  ];
+
   return (
     <>
       <Navigator />
 
-      <div className="container mx-auto mt-32 w-10/12 py-5">
+      <div className="container mx-auto mt-32 w-10/12 max-w-5xl py-5">
         {/* group 1 */}
-        <div className="flex flex-col gap-5 lg:flex-row">
+        <div className="flex flex-col gap-10 lg:flex-row">
           {/* Circle */}
-          <div className="mx-auto flex w-3/12 items-center justify-center">
-            <div className="h-56 w-56 rounded-full bg-slate-200"></div>
+          <div className="mx-auto flex w-3/12 items-center">
+            <div className="h-60 w-60 rounded-full bg-slate-200"></div>
           </div>
 
           {/* Text */}
           <div className="mt-16 lg:mt-0 lg:w-9/12">
             {/* Heading */}
-            <h1 className="w-10/12 text-2xl leading-relaxed md:text-4xl lg:w-full">
+            <h1 className="text-2xl leading-normal md:text-4xl">
               Hey, I'm{" "}
               <span className="font-bold tracking-wide uppercase">
                 Wilhelmus Ole
               </span>{" "}
-              a software developer from Philippines.
+              <br />a software developer from Philippines.
             </h1>
 
             {/* Paragraph */}
-            <p className="text-font-light mt-10 text-lg leading-relaxed font-extralight">
+            <p className="text-font-light mt-10 text-lg leading-relaxed font-extralight lg:w-10/12">
               I'm an self-taught Junior Full-Stack Web Developer focused on
               building modern, clean, responsive, and functional websites. I
               also have experience in web automation and web design.
             </p>
 
-            <div className="bg-border-light my-10 hidden h-0.5 w-9/12 lg:block"></div>
+            <div className="bg-border-light my-14 hidden h-0.5 w-9/12 lg:block"></div>
           </div>
         </div>
 
         {/* INTEREST */}
         {/* group 2 */}
-        <div className="flex flex-col gap-5 lg:flex-row">
+        <div className="flex flex-col gap-10 lg:flex-row">
           {/* Interest */}
           <div className="mt-16 lg:mt-0 lg:w-3/12">
             <h2>I'm interested in</h2>
 
             {/* Parent */}
-            <div className="mt-5 flex flex-wrap gap-3 font-light capitalize">
+            <div className="mt-5 flex flex-wrap gap-3 font-light capitalize lg:flex-col">
               {/* Item */}
               <InterestItem interestName="Web Development" />
               <InterestItem interestName="Bot Development" />
@@ -64,39 +82,39 @@ export default function About() {
           <div className="bg-border-light my-10 hidden h-0.5 w-9/12"></div>
 
           {/* Paragraphs */}
-          <div className="text-font-light flex flex-col gap-6 leading-relaxed lg:mt-0 lg:w-8/12">
-            <p className="font-extralight">
-              Kamusta! I’m a recent graduate with a degree in Computer Science.
-              During my studies, I developed strong programming skills and
-              gained hands-on experience through various school projects,
-              including app development, software engineering, and my thesis.
-              Additionally, I have experience as a Freelance Full Stack Web
-              Developer and Web Designer. Along the way, I taught myself web
-              automation, building bots for personal projects.
-            </p>
-
-            <p className="font-extralight">
-              I focus on front-end development but I’m comfortable as a full
-              stack developer. I’m passionate about creating websites that are
-              clean, modern, responsive, and easy to use. My goal is to build
-              user-friendly and visually appealing websites that offer a great
-              user experience.
-            </p>
-
-            <p className="font-extralight">
-              As a self-taught developer, I know that learning never really
-              stops. Currently, I’m improving my knowledge in MERN and Laravel
-              technologies, applying what I learn to real-world and hobby
-              projects.
-            </p>
-
-            <p className="font-extralight">
-              Looking ahead, I’m excited to keep growing, learning new tools,
-              and taking on more complex projects. My goal is to work on
-              projects that make a real difference and have a positive impact,
-              and I’m always open to opportunities to collaborate and create
-              meaningful digital experiences.
-            </p>
+          <div className="text-font-light leading-relaxed lg:mt-0 lg:w-9/12">
+            <div className="flex w-10/12 flex-col gap-6">
+              {/* items */}
+              <p className="font-extralight">
+                Kamusta! I’m a recent graduate with a degree in Computer
+                Science. During my studies, I developed strong programming
+                skills and gained hands-on experience through various school
+                projects, including app development, software engineering, and
+                my thesis. Additionally, I have experience as a Freelance Full
+                Stack Web Developer and Web Designer. Along the way, I taught
+                myself web automation, building bots for personal projects.
+              </p>
+              <p className="font-extralight">
+                I focus on front-end development but I’m comfortable as a full
+                stack developer. I’m passionate about creating websites that are
+                clean, modern, responsive, and easy to use. My goal is to build
+                user-friendly and visually appealing websites that offer a great
+                user experience.
+              </p>
+              <p className="font-extralight">
+                As a self-taught developer, I know that learning never really
+                stops. Currently, I’m improving my knowledge in MERN and Laravel
+                technologies, applying what I learn to real-world and hobby
+                projects.
+              </p>
+              <p className="font-extralight">
+                Looking ahead, I’m excited to keep growing, learning new tools,
+                and taking on more complex projects. My goal is to work on
+                projects that make a real difference and have a positive impact,
+                and I’m always open to opportunities to collaborate and create
+                meaningful digital experiences.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -104,41 +122,27 @@ export default function About() {
       <SectionLine />
 
       {/* SERVICES */}
-      <div className="container mx-auto w-10/12">
+      <div className="container mx-auto w-10/12 max-w-6xl">
         <div className="flex flex-wrap items-center justify-center gap-10">
           {/* Card */}
-          <ServiceItem
-            data={{
-              title: "Web Development",
-              description:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores corporis?",
-            }}
-          />
-
-          {/* Card */}
-          <ServiceItem
-            data={{
-              title: "Web Designer",
-              description:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores corporis?",
-            }}
-          />
-
-          {/* Card */}
-          <ServiceItem
-            data={{
-              title: "Web Automation",
-              description:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores corporis?",
-            }}
-          />
+          {servicesData.map((service, index) => (
+            <>
+              <ServiceItem
+                key={index}
+                data={{
+                  title: service.title,
+                  description: service.description,
+                }}
+              />
+            </>
+          ))}
         </div>
       </div>
 
       <SectionLine />
 
       {/* TECHNOLOGIES */}
-      <div className="container mx-auto mt-36 w-10/12 py-5">
+      <div className="container mx-auto mt-36 w-10/12 max-w-5xl py-5">
         <h2 className="mb-24 max-w-lg text-center text-xl leading-relaxed md:mx-auto md:w-10/12 md:text-2xl">
           Below are the technologies I have worked with and am still learning
         </h2>
@@ -174,33 +178,35 @@ export default function About() {
       <SectionLine />
 
       {/* WORK EXPERIENCE */}
-      <div className="container mx-auto mt-36 w-10/12 bg-red-100">
-        {/* LEFT */}
-        <div className="border-border-superlight flex h-[40vh] items-center justify-center border-1 bg-black text-center">
-          <h2 className="text-2xl font-semibold uppercase md:text-3xl">
-            Work experience
-          </h2>
-        </div>
-        {/* RIGHT */}
-        <div className="border-border-superlight flex h-[60vh] flex-col justify-between border-1 bg-black px-4 py-10 md:px-10">
-          <div className="flex flex-col gap-5">
-            {/* Item */}
-            <WorkItem
-              workName="Freelance Web Developer"
-              workDate="Jan 2023 - Mar 2024"
-            />
-
-            {/* Item */}
-            <WorkItem
-              workName="Freelance Web Developer"
-              workDate="Jan 2023 - Mar 2024"
-            />
+      <div className="container mx-auto mt-36 w-10/12 max-w-5xl bg-red-100">
+        <div className="flex">
+          {/* LEFT */}
+          <div className="border-border-superlight flex h-[40vh] w-6/12 items-center justify-center border-1 bg-black text-center lg:h-[60vh]">
+            <h2 className="text-2xl font-semibold uppercase md:text-3xl">
+              Work experience
+            </h2>
           </div>
+          {/* RIGHT */}
+          <div className="border-border-superlight flex h-[60vh] w-6/12 flex-col justify-between border-1 bg-black px-4 py-10 md:px-5">
+            <div className="flex flex-col gap-5">
+              {/* Item */}
+              <WorkItem
+                workName="Freelance Web Developer"
+                workDate="Jan 2023 - Mar 2024"
+              />
 
-          <div className="text-center">
-            <p className="mb-2">Help me to add more?</p>
-            <div className="mx-auto w-fit rounded-lg bg-white px-4 py-2 text-black uppercase">
-              Get in touch
+              {/* Item */}
+              <WorkItem
+                workName="Freelance Web Developer"
+                workDate="Jan 2023 - Mar 2024"
+              />
+            </div>
+
+            <div className="text-center">
+              <p className="mb-2">Help me to add more?</p>
+              <div className="mx-auto w-fit rounded-lg bg-white px-4 py-2 text-black uppercase">
+                Get in touch
+              </div>
             </div>
           </div>
         </div>

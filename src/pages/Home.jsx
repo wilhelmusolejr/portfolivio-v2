@@ -50,7 +50,7 @@ function App() {
       </p>
 
       {/* ALBUM */}
-      <div className="project-album container mx-auto my-14 flex flex-wrap justify-center gap-30 px-10 md:gap-12 lg:gap-20">
+      <div className="project-album container mx-auto my-14 flex max-w-7xl flex-wrap justify-center gap-30 px-10 md:gap-12 lg:gap-20">
         {/* Item */}
         {highlightProjectsObj.map((project, index) => (
           <>

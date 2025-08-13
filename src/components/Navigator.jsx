@@ -10,7 +10,7 @@ export default function Navigator() {
         <div className="">
           <a
             href="/"
-            className="text-2xl font-bold tracking-wider text-white uppercase"
+            className="text-lg font-bold tracking-wider text-white uppercase sm:text-2xl"
           >
             Wilhelmus Ole
           </a>
