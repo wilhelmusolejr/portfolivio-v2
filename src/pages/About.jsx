@@ -36,12 +36,12 @@ export default function About() {
         {/* group 1 */}
         <div className="flex flex-col gap-10 lg:flex-row">
           {/* Circle */}
-          <div className="mx-auto flex w-3/12 items-center">
+          <div className="w-3//12 w-h-full mx-auto flex items-center">
             <div className="h-60 w-60 rounded-full bg-slate-200"></div>
           </div>
 
           {/* Text */}
-          <div className="mt-16 lg:mt-0 lg:w-9/12">
+          <div className="mt-0 lg:w-9/12">
             {/* Heading */}
             <h1 className="text-2xl leading-normal md:text-4xl">
               Hey, I'm{" "}
@@ -66,7 +66,7 @@ export default function About() {
         {/* group 2 */}
         <div className="flex flex-col gap-10 lg:flex-row">
           {/* Interest */}
-          <div className="mt-16 lg:mt-0 lg:w-3/12">
+          <div className="mt-10 lg:mt-0 lg:w-3/12">
             <h2>I'm interested in</h2>
 
             {/* Parent */}
@@ -83,7 +83,7 @@ export default function About() {
 
           {/* Paragraphs */}
           <div className="text-font-light leading-relaxed lg:mt-0 lg:w-9/12">
-            <div className="flex w-10/12 flex-col gap-6">
+            <div className="w-10//12 flex flex-col gap-6">
               {/* items */}
               <p className="font-extralight">
                 Kamusta! I’m a recent graduate with a degree in Computer
@@ -142,7 +142,7 @@ export default function About() {
       <SectionLine />
 
       {/* TECHNOLOGIES */}
-      <div className="container mx-auto mt-36 w-10/12 max-w-5xl py-5">
+      <div className="container mx-auto mt-36 w-10/12 max-w-5xl">
         <h2 className="mb-24 max-w-lg text-center text-xl leading-relaxed md:mx-auto md:w-10/12 md:text-2xl">
           Below are the technologies I have worked with and am still learning
         </h2>
@@ -179,15 +179,15 @@ export default function About() {
 
       {/* WORK EXPERIENCE */}
       <div className="container mx-auto mt-36 w-10/12 max-w-5xl bg-red-100">
-        <div className="flex">
+        <div className="flex flex-col">
           {/* LEFT */}
-          <div className="border-border-superlight flex h-[40vh] w-6/12 items-center justify-center border-1 bg-black text-center lg:h-[60vh]">
+          <div className="border-border-superlight w-6//12 flex h-[40vh] w-full items-center justify-center border-1 bg-black text-center lg:h-[60vh]">
             <h2 className="text-2xl font-semibold uppercase md:text-3xl">
               Work experience
             </h2>
           </div>
           {/* RIGHT */}
-          <div className="border-border-superlight flex h-[60vh] w-6/12 flex-col justify-between border-1 bg-black px-4 py-10 md:px-5">
+          <div className="border-border-superlight w-6//12 flex h-[60vh] w-full flex-col justify-between border-1 bg-black px-4 py-10 md:px-5">
             <div className="flex flex-col gap-5">
               {/* Item */}
               <WorkItem
@@ -224,7 +224,7 @@ export default function About() {
 
         <div className="mt-10">
           <p className="uppercase">get in touch (Click to copy)</p>
-          <p className="text-2xl font-bold text-white md:text-4xl">
+          <p className="hidden text-2xl font-bold text-white md:text-4xl">
             wilhelmus.olejr@gmail.com
           </p>
         </div>
