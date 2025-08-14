@@ -11,7 +11,7 @@ export default function Project() {
     <>
       <Navigator />
 
-      <div className="container mx-auto mt-24 mb-12 w-10/12 max-w-5xl">
+      <div className="container mx-auto mt-32 mb-10 w-10/12 max-w-5xl md:mb-16">
         {/* BACK */}
         <div className="mb-5 flex items-center gap-2">
           <FontAwesomeIcon icon={faArrowLeft} />
@@ -19,7 +19,7 @@ export default function Project() {
         </div>
 
         {/* HEADING */}
-        <h1 className="mb-2 text-2xl font-bold tracking-wide text-white">
+        <h1 className="mb-2 text-2xl font-bold tracking-wide text-white lg:text-4xl">
           Philippine currency identifier
         </h1>
 
@@ -28,7 +28,7 @@ export default function Project() {
       </div>
 
       {/* image */}
-      <div className="border-light-white h-[40vh] border-t-1 border-b-1 bg-slate-700"></div>
+      <div className="border-light-white h-[40vh] border-t-1 border-b-1 bg-slate-700 md:h-[50vh]"></div>
 
       {/* details */}
       <div className="container mx-auto mt-24 mb-12 flex w-10/12 max-w-5xl flex-col gap-12">
@@ -126,19 +126,19 @@ export default function Project() {
       </div>
 
       {/* album */}
-      <div className="scrollbar-hide mx-auto w-10/12 overflow-x-auto">
-        <div className="flex gap-5">
-          <div className="h-48 w-56 flex-shrink-0 rounded-lg bg-red-300"></div>
-          <div className="h-48 w-56 flex-shrink-0 rounded-lg bg-blue-300"></div>
-          <div className="h-48 w-56 flex-shrink-0 rounded-lg bg-green-300"></div>
-          <div className="h-48 w-56 flex-shrink-0 rounded-lg bg-yellow-300"></div>
+      <div className="scrollbar-hide mx-auto w-10/12 overflow-x-auto lg:overflow-x-visible">
+        <div className="flex gap-5 lg:flex-wrap lg:justify-center">
+          <div className="h-48 w-56 flex-shrink-0 rounded-lg bg-red-300 lg:flex-shrink"></div>
+          <div className="h-48 w-56 flex-shrink-0 rounded-lg bg-blue-300 lg:flex-shrink"></div>
+          <div className="h-48 w-56 flex-shrink-0 rounded-lg bg-green-300 lg:flex-shrink"></div>
+          <div className="h-48 w-56 flex-shrink-0 rounded-lg bg-yellow-300 lg:flex-shrink"></div>
         </div>
       </div>
 
       <SectionLine />
 
-      <div className="container mx-auto w-10/12 max-w-5xl">
-        <div className="flex flex-col gap-15">
+      <div className="container mx-auto mb-32 w-10/12 max-w-5xl">
+        <div className="flex flex-wrap gap-15 md:justify-center">
           {/* FONTS */}
           <div className="">
             <h3 className="mb-2 text-2xl">Fonts</h3>
@@ -192,7 +192,7 @@ export default function Project() {
           {/* Colors */}
           <div className="">
             <h3 className="mb-5 text-2xl">Colors</h3>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col gap-4">
               {/* item */}
               <div className="flex items-center gap-4">
                 {/* box */}
