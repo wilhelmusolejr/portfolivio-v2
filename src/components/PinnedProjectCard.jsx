@@ -6,9 +6,9 @@ import ProjectTagItem from "./ProjectTagItem";
 export default function PinnedProjectCard() {
   return (
     <>
-      <div className="bg-lightdark border-dark-gray rounded-lg border-1 md:flex">
+      <div className="bg-lightdark border-dark-gray rounded-3xl border-1 md:flex">
         {/* image */}
-        <div className="overflow-hidden rounded-t-lg md:w-6/12 md:rounded-t-none md:rounded-l-lg">
+        <div className="overflow-hidden rounded-t-3xl md:w-6/12 md:rounded-t-none md:rounded-l-3xl">
           {/* image */}
           <img
             src={showcase}
@@ -17,10 +17,10 @@ export default function PinnedProjectCard() {
           />
         </div>
         {/* text */}
-        <div className="flex flex-col gap-5 p-5 py-7 md:w-6/12">
+        <div className="flex flex-col gap-5 p-5 py-7 md:w-6/12 lg:p-7">
           {/* paragraph */}
           <div className="capitalize">
-            <h2 className="mb-2 text-xl font-medium tracking-wide text-white">
+            <h2 className="mb-2 text-xl font-medium tracking-wide text-white lg:text-2xl">
               Philippine currency identifier
             </h2>
             <p className="text-tertiary-white text-sm">
@@ -30,7 +30,7 @@ export default function PinnedProjectCard() {
 
           {/* paragraph */}
           <div className="">
-            <p className="text-tertiary-white text-sm font-light tracking-wide">
+            <p className="text-tertiary-white text-sm leading-relaxed font-light">
               Philippine Currency Identifier is a thesis-developed app that
               helps visually impaired people in the Philippines identify
               currency denominations using a...
@@ -40,6 +40,15 @@ export default function PinnedProjectCard() {
           {/* tags */}
           <div className="">
             <div className="flex flex-wrap gap-3">
+              {/* item */}
+              <ProjectTagItem />
+
+              {/* item */}
+              <ProjectTagItem />
+
+              {/* item */}
+              <ProjectTagItem />
+
               {/* item */}
               <ProjectTagItem />
 
