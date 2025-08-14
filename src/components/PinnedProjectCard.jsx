@@ -1,12 +1,15 @@
 import React from "react";
 
+import showcase from "@assets/projects/showcase.webp";
+
 export default function PinnedProjectCard() {
   return (
     <>
       <div className="bg-lightdark border-dark-gray rounded-lg border-1">
         {/* image */}
-        <div className="">
-          <div className="h-48 rounded-t-lg bg-red-300"></div>
+        <div className="h-48 overflow-hidden rounded-t-lg">
+          {/* image */}
+          <img src={showcase} alt="Logo" className="object-cover" />
         </div>
         {/* text */}
         <div className="flex flex-col gap-5 p-5 py-7">
