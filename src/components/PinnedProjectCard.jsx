@@ -1,18 +1,23 @@
 import React from "react";
 
 import showcase from "@assets/projects/showcase.webp";
+import ProjectTagItem from "./ProjectTagItem";
 
 export default function PinnedProjectCard() {
   return (
     <>
-      <div className="bg-lightdark border-dark-gray rounded-lg border-1">
+      <div className="bg-lightdark border-dark-gray rounded-lg border-1 md:flex">
         {/* image */}
-        <div className="h-48 overflow-hidden rounded-t-lg">
+        <div className="overflow-hidden rounded-t-lg md:w-6/12 md:rounded-t-none md:rounded-l-lg">
           {/* image */}
-          <img src={showcase} alt="Logo" className="object-cover" />
+          <img
+            src={showcase}
+            alt="Logo"
+            className="mx-auto h-full w-auto object-cover"
+          />
         </div>
         {/* text */}
-        <div className="flex flex-col gap-5 p-5 py-7">
+        <div className="flex flex-col gap-5 p-5 py-7 md:w-6/12">
           {/* paragraph */}
           <div className="capitalize">
             <h2 className="mb-2 text-xl font-medium tracking-wide text-white">
@@ -25,7 +30,7 @@ export default function PinnedProjectCard() {
 
           {/* paragraph */}
           <div className="">
-            <p className="text-tertiary-white font-light tracking-wide">
+            <p className="text-tertiary-white text-sm font-light tracking-wide">
               Philippine Currency Identifier is a thesis-developed app that
               helps visually impaired people in the Philippines identify
               currency denominations using a...
@@ -36,14 +41,10 @@ export default function PinnedProjectCard() {
           <div className="">
             <div className="flex flex-wrap gap-3">
               {/* item */}
-              <div className="bg-third-black text-tertiary-white inline-block rounded-full px-4 py-2 text-xs tracking-wider">
-                <p>voice-assistance</p>
-              </div>
+              <ProjectTagItem />
 
               {/* item */}
-              <div className="bg-third-black text-tertiary-white inline-block rounded-full px-4 py-2 text-xs tracking-wider">
-                <p>voice-assistance</p>
-              </div>
+              <ProjectTagItem />
             </div>
           </div>
         </div>

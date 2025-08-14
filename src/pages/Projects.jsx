@@ -17,7 +17,7 @@ export default function Projects() {
         </h1>
 
         {/* parent   */}
-        <div className="flex flex-wrap justify-center gap-10">
+        <div className="flex flex-wrap justify-center gap-12">
           {/* item */}
           <PinnedProjectCard />
 
@@ -29,7 +29,7 @@ export default function Projects() {
       <SectionLine />
 
       {/* other projects */}
-      <div className="container mx-auto mt-24 w-10/12 max-w-5xl">
+      <div className="container mx-auto mt-24 mb-32 w-10/12 max-w-5xl">
         <h2 className="mb-16 max-w-lg text-center text-3xl leading-relaxed font-bold tracking-wide uppercase md:mx-auto md:w-10/12 md:text-2xl">
           other Projects
         </h2>
