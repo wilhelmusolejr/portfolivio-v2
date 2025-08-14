@@ -6,7 +6,7 @@ export default function OtherProjectCard() {
       <div className="">
         {/* image */}
         <div className="">
-          <div className="h-48 rounded-lg bg-red-300"></div>
+          <div className="h-48 max-w-72 rounded-lg bg-red-300"></div>
         </div>
         {/* text */}
         <div className="mt-10 text-center capitalize">

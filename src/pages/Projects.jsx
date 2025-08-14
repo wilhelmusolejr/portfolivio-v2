@@ -29,7 +29,6 @@ export default function Projects() {
       <SectionLine />
 
       {/* other projects */}
-
       <div className="container mx-auto mt-24 w-10/12 max-w-5xl">
         <h2 className="mb-16 max-w-lg text-center text-3xl leading-relaxed font-bold tracking-wide uppercase md:mx-auto md:w-10/12 md:text-2xl">
           other Projects
@@ -44,35 +43,8 @@ export default function Projects() {
         </div>
       </div>
 
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      {/* FOOTER */}
+      <footer className="container mx-auto my-14 h-52 w-10/12 rounded-md"></footer>
     </>
   );
 }
