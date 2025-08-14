@@ -34,7 +34,10 @@ export default function Projects() {
           other Projects
         </h2>
 
-        <div className="flex flex-col justify-center gap-20">
+        <div className="flex flex-wrap items-center justify-center gap-20 md:gap-10">
+          {/* card */}
+          <OtherProjectCard />
+
           {/* card */}
           <OtherProjectCard />
 
