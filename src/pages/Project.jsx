@@ -2,11 +2,20 @@ import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useParams } from "react-router-dom";
 
 import Navigator from "@components/Navigator";
 import SectionLine from "../components/SectionLine";
+import showcase from "@assets/projects/showcase.webp";
+import { getProject } from "../ProjectData";
 
 export default function Project() {
+  const { name } = useParams();
+
+  const project = getProject(name);
+
+  console.log(project);
+
   return (
     <>
       <Navigator />
@@ -20,15 +29,23 @@ export default function Project() {
 
         {/* HEADING */}
         <h1 className="mb-2 text-2xl font-bold tracking-wide text-white lg:text-4xl">
-          Philippine currency identifier
+          {project.name}
         </h1>
 
         {/* SMALL INFO */}
-        <p className="text-tertiary-white text-sm">Currency recognition app.</p>
+        <p className="text-tertiary-white text-sm">
+          {project.information.short_description}
+        </p>
       </div>
 
       {/* image */}
-      <div className="border-light-white h-[40vh] border-t-1 border-b-1 bg-slate-700 md:h-[50vh]"></div>
+      <div className="flex min-h-[40vh] items-center justify-center border-t-2 border-b-2 border-white/10 bg-gradient-to-tr from-[#327B36]/7 to-[#FBCA01]/7 py-15 md:h-[60vh]">
+        <img
+          src={showcase}
+          alt=""
+          className="h-full w-auto rounded-2xl object-contain"
+        />
+      </div>
 
       {/* details */}
       <div className="container mx-auto mt-24 mb-12 flex w-10/12 max-w-5xl flex-col gap-12">
@@ -39,15 +56,17 @@ export default function Project() {
             Overview
           </h2>
 
-          <p className="text-tertiary-white leading-relaxed font-light">
-            Philippine Currency Identifier is a thesis-developed app that helps
-            visually impaired people in the Philippines identify currency
-            denominations using a convolutional neural network. It offers vocal
-            denomination recognition and a user-friendly interface for easy
-            accessibility, enabling independent financial transactions through a
-            quick smartphone scan. This app represents a significant advancement
-            in assistive technology and inclusivity.
-          </p>
+          {/* overview */}
+          <div className="flex flex-col gap-5">
+            {project.information.description.map((item, index) => (
+              <p
+                key={index}
+                className="text-tertiary-white leading-relaxed font-light"
+              >
+                {item}
+              </p>
+            ))}
+          </div>
         </div>
 
         {/* ITEM - Features */}
@@ -58,20 +77,11 @@ export default function Project() {
           </h2>
 
           <ul className="text-tertiary-white ms-5 flex list-disc flex-col gap-2 leading-relaxed font-light">
-            {/* item */}
-            <li className="">
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Tenetur, ad.
-              </p>
-            </li>
-            {/* item */}
-            <li className="">
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Tenetur, ad.
-              </p>
-            </li>
+            {project.information.features.map((feature, index) => (
+              <li key={index} className="">
+                <p>{feature}</p>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -100,28 +110,26 @@ export default function Project() {
           </h2>
 
           <a href="#" className="text-tertiary-white font-light underline">
-            https://demo.com
+            {project.link.external
+              ? project.link.external
+              : "No demo available"}
           </a>
         </div>
       </div>
 
       {/* tags */}
       <div className="container mx-auto my-32 max-w-5xl">
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          {/* item */}
-          <div className="border-light-white bg-third-black w-fit rounded-md border-1 px-3 py-2">
-            <p className="text-tertiary-white font-light">TensorFLOW</p>
-          </div>
-
-          {/* item */}
-          <div className="border-light-white bg-third-black w-fit rounded-md border-1 px-3 py-2">
-            <p className="text-tertiary-white font-light">TensorFLOW</p>
-          </div>
-
-          {/* item */}
-          <div className="border-light-white bg-third-black w-fit rounded-md border-1 px-3 py-2">
-            <p className="text-tertiary-white font-light">TensorFLOW</p>
-          </div>
+        <div className="mx-auto flex w-10/12 flex-wrap items-center justify-center gap-3">
+          {project.information.tags.technology.map((tag, index) => (
+            <a
+              href={`https://www.google.com/search?q=${tag}`}
+              target="_blank"
+              key={index}
+              className="border-light-white bg-third-black w-fit rounded-md border-1 px-3 py-2"
+            >
+              <p className="text-tertiary-white font-light">{tag}</p>
+            </a>
+          ))}
         </div>
       </div>
 
@@ -138,16 +146,23 @@ export default function Project() {
       <SectionLine />
 
       <div className="container mx-auto mb-32 w-10/12 max-w-5xl">
-        <div className="flex flex-wrap gap-15 md:justify-center">
+        <div className="flex flex-wrap gap-15 md:justify-center lg:gap-20">
           {/* FONTS */}
-          <div className="">
-            <h3 className="mb-2 text-2xl">Fonts</h3>
-            <p className="text-tertiary-white">Poppins</p>
+          <div className="capitalize">
+            <h3 className="mb-7 text-2xl">Fonts</h3>
+            {project.design.font.map((font, index) => (
+              <p
+                key={index}
+                className="text-tertiary-white mb-2 font-light tracking-wider"
+              >
+                {font}
+              </p>
+            ))}
           </div>
 
           {/* LANGUAGES */}
           <div className="">
-            <h3 className="mb-5 text-2xl">Languages</h3>
+            <h3 className="mb-7 text-2xl">Languages</h3>
 
             <div className="mb-5 flex h-2 gap-1">
               <div className="h-2 w-8/12 rounded-s-lg bg-blue-400"></div>
@@ -191,37 +206,33 @@ export default function Project() {
 
           {/* Colors */}
           <div className="">
-            <h3 className="mb-5 text-2xl">Colors</h3>
+            <h3 className="mb-7 text-2xl">Colors</h3>
             <div className="flex flex-col gap-4">
-              {/* item */}
-              <div className="flex items-center gap-4">
-                {/* box */}
-                <div className="h-10 w-20 rounded-lg border-2 border-green-700 bg-green-500"></div>
-                {/* name */}
-                <p className="text-tertiary-white font-light tracking-wider">
-                  #327B36
-                </p>
-              </div>
-
-              {/* item */}
-              <div className="flex items-center gap-4">
-                {/* box */}
-                <div className="h-10 w-20 rounded-lg border-2 border-green-700 bg-green-500"></div>
-                {/* name */}
-                <p className="text-tertiary-white font-light tracking-wider">
-                  #327B36
-                </p>
-              </div>
+              {project.design.color.map((color, index) => (
+                <div key={index} className="flex items-center gap-4">
+                  {/* box */}
+                  <div
+                    className={`h-10 w-20 rounded-lg border-2 border-black/50`}
+                    style={{ backgroundColor: color }}
+                  ></div>
+                  {/* name */}
+                  <p className="text-tertiary-white font-light tracking-wider">
+                    {color}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Tags */}
           <div className="">
-            <h3 className="mb-5 text-2xl">Tags</h3>
+            <h3 className="mb-7 text-2xl">Tags</h3>
             <div className="flex flex-col gap-2 capitalize">
-              <p>voice-assistance</p>
-              <p>currency-identification</p>
-              <p>Machine-learning</p>
+              {project.information.tags.project.map((tag, index) => (
+                <p key={index} className="font-light tracking-wider lowercase">
+                  {tag}
+                </p>
+              ))}
             </div>
           </div>
         </div>
