@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Navigator() {
   return (
-    <nav className="sticky top-5 z-10 container mx-auto my-14 w-10/12 rounded-md px-5 py-7 shadow-lg md:px-7">
+    <nav className="sticky top-5 z-20 container mx-auto my-14 w-10/12 rounded-md px-5 py-7 shadow-lg md:px-7">
       <div className="flex items-center justify-between">
         {/* Logo */}
         <div className="">
