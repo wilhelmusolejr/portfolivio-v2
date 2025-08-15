@@ -5,7 +5,14 @@ import PinnedProjectCard from "../components/PinnedProjectCard";
 import SectionLine from "../components/SectionLine";
 import OtherProjectCard from "../components/OtherProjectCard";
 
+import { projects } from "../ProjectData";
+
 export default function Projects() {
+  const project = projects();
+
+  const pinnedProjects = project[1];
+  const otherProjects = project[0];
+
   return (
     <>
       <Navigator />
@@ -19,10 +26,9 @@ export default function Projects() {
         {/* parent   */}
         <div className="flex flex-wrap justify-center gap-12">
           {/* item */}
-          <PinnedProjectCard />
-
-          {/* item */}
-          <PinnedProjectCard />
+          {pinnedProjects.map((project, index) => (
+            <PinnedProjectCard data={project} key={index} />
+          ))}
         </div>
       </div>
 
@@ -34,15 +40,11 @@ export default function Projects() {
           other Projects
         </h2>
 
-        <div className="flex flex-wrap items-center justify-center gap-20 md:gap-10">
+        <div className="flex flex-wrap items-center justify-center gap-20 md:gap-10 md:gap-y-20">
           {/* card */}
-          <OtherProjectCard />
-
-          {/* card */}
-          <OtherProjectCard />
-
-          {/* card */}
-          <OtherProjectCard />
+          {otherProjects.map((project, index) => (
+            <OtherProjectCard data={project} key={index} />
+          ))}
         </div>
       </div>
 

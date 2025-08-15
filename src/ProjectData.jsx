@@ -1255,6 +1255,44 @@ function updateProjectLink(projects) {
   return projects;
 }
 
+export function projects() {
+  const projects = all_projects();
+  const categorizedProjects = {
+    otherProjects: [],
+    pinnedProjects: [],
+  };
+
+  projects.forEach(({ id, name, information, link, project_showcase }) => {
+    const projectObject = {
+      id,
+      name,
+      information: {
+        short_description: information.short_description,
+        description: information.description[0],
+        tags: information.tags,
+        type: information.type,
+      },
+      link,
+      project_showcase: {
+        url: `projects/${link.name}/`,
+        is_other: project_showcase.is_other,
+        is_pinned: project_showcase.is_pinned,
+      },
+    };
+
+    if (project_showcase.is_other != null) {
+      categorizedProjects.otherProjects.push(projectObject);
+    } else {
+      categorizedProjects.pinnedProjects.push(projectObject);
+    }
+  });
+
+  return [
+    categorizedProjects.otherProjects,
+    categorizedProjects.pinnedProjects,
+  ];
+}
+
 export function all_projects() {
   return updateProjectLink(getAllProjects());
 }

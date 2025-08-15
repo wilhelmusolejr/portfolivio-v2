@@ -6,15 +6,67 @@ import { useParams } from "react-router-dom";
 
 import Navigator from "@components/Navigator";
 import SectionLine from "../components/SectionLine";
-import showcase from "@assets/projects/showcase.webp";
 import { getProject } from "../ProjectData";
 
 export default function Project() {
   const { name } = useParams();
 
   const project = getProject(name);
+  // const project_image = `/assets/${project.project_showcase.url}${project.project_showcase.is_other.image}`;
+  const project_image = `/assets/${project.project_showcase.url}${project.project_showcase.project.banner_image}`;
 
-  console.log(project);
+  function isNearWhiteOrBlack(hex) {
+    const cleanHex = hex.replace("#", "");
+    const r = parseInt(cleanHex.substring(0, 2), 16);
+    const g = parseInt(cleanHex.substring(2, 4), 16);
+    const b = parseInt(cleanHex.substring(4, 6), 16);
+
+    // Check near white (all channels high)
+    if (r > 220 && g > 220 && b > 220) return "near white";
+
+    // Check near black (all channels low)
+    if (r < 35 && g < 35 && b < 35) return "near black";
+
+    // Otherwise, it's a good color
+    return "good color";
+  }
+
+  function getRandomColor() {
+    let r, g, b;
+
+    while (true) {
+      r = Math.floor(Math.random() * 256);
+      g = Math.floor(Math.random() * 256);
+      b = Math.floor(Math.random() * 256);
+
+      // Reject near white
+      if (r > 220 && g > 220 && b > 220) continue;
+
+      // Reject near black
+      if (r < 35 && g < 35 && b < 35) continue;
+
+      // Passed test
+      break;
+    }
+
+    return `#${r.toString(16).padStart(2, "0")}${g
+      .toString(16)
+      .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+  }
+
+  let colors_background = [];
+
+  if (project.design.color.length < 0) {
+    colors_background = Array.from({ length: 5 }, getRandomColor);
+  } else {
+    colors_background = project.design.color.filter(
+      (c) => isNearWhiteOrBlack(c) === "good color",
+    );
+
+    colors_background.unshift("#fff");
+    colors_background.push("#fff");
+    colors_background.push("#000");
+  }
 
   return (
     <>
@@ -39,12 +91,22 @@ export default function Project() {
       </div>
 
       {/* image */}
-      <div className="flex min-h-[40vh] items-center justify-center border-t-2 border-b-2 border-white/10 bg-gradient-to-tr from-[#327B36]/7 to-[#FBCA01]/7 py-15 md:h-[60vh]">
+      <div className="relative flex min-h-[40vh] items-center justify-center py-15 md:h-[60vh]">
+        {/* img */}
         <img
-          src={showcase}
+          src={project_image}
           alt=""
-          className="h-full w-auto rounded-2xl object-contain"
+          className="z-10 h-full w-auto rounded-2xl object-contain"
         />
+        {/* bg */}
+        <div className="absolute inset-0 shadow-[inset_0px_2px_0px_0px_rgba(255,255,255,0.1),inset_0px_-2px_0px_0px_rgba(255,255,255,0.1)]">
+          <div
+            className="absolute inset-0 opacity-5"
+            style={{
+              background: `linear-gradient(to top right, ${colors_background.join(",")})`,
+            }}
+          ></div>
+        </div>
       </div>
 
       {/* details */}
@@ -136,12 +198,24 @@ export default function Project() {
       {/* album */}
       <div className="scrollbar-hide mx-auto w-10/12 overflow-x-auto lg:overflow-x-visible">
         <div className="flex gap-5 lg:flex-wrap lg:justify-center">
-          <div className="h-48 w-56 flex-shrink-0 rounded-lg bg-red-300 lg:flex-shrink"></div>
-          <div className="h-48 w-56 flex-shrink-0 rounded-lg bg-blue-300 lg:flex-shrink"></div>
-          <div className="h-48 w-56 flex-shrink-0 rounded-lg bg-green-300 lg:flex-shrink"></div>
-          <div className="h-48 w-56 flex-shrink-0 rounded-lg bg-yellow-300 lg:flex-shrink"></div>
+          {project.project_showcase.project.screenshot.map(
+            (screenshot, index) => (
+              <img
+                key={index}
+                src={`/assets/${project.project_showcase.url}${screenshot}`}
+                alt={`Screenshot ${index + 1}`}
+                className="h-48 w-56 rounded-lg object-cover lg:flex-shrink"
+              />
+            ),
+          )}
         </div>
       </div>
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
 
       <SectionLine />
 
@@ -237,6 +311,12 @@ export default function Project() {
           </div>
         </div>
       </div>
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
 
       {/* FOOTER */}
       <footer className="container mx-auto my-14 h-52 w-10/12 rounded-md bg-gray-800"></footer>

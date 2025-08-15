@@ -1,23 +1,25 @@
 import React from "react";
 
-import showcase from "@assets/projects/showcase.webp";
+export default function OtherProjectCard({ data }) {
+  const project_image = `/assets/${data.project_showcase.url}${data.project_showcase.is_other.image}`;
 
-export default function OtherProjectCard() {
+  let url_name = data.name.replace(/ /g, "-").toLowerCase();
+
   return (
     <>
-      <div className="">
+      <a href={`/project/${url_name}`} className="">
         <div className="h-48 overflow-hidden">
           <img
-            src={showcase}
+            src={project_image}
             alt="Logo"
             className="mx-auto h-full w-auto rounded-lg object-cover"
           />
         </div>
         {/* text */}
         <div className="mt-10 text-center capitalize">
-          <h3>Mobhie</h3>
+          <h3>{data.name}</h3>
         </div>
-      </div>
+      </a>
     </>
   );
 }

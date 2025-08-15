@@ -1,17 +1,26 @@
 import React from "react";
 
-import showcase from "@assets/projects/showcase.webp";
 import ProjectTagItem from "./ProjectTagItem";
 
-export default function PinnedProjectCard() {
+export default function PinnedProjectCard({ data }) {
+  const project_image = `/assets/${data.project_showcase.url}${data.project_showcase.is_pinned.image}`;
+
+  const new_paragraph =
+    data.information.description.split(" ").slice(0, 20).join(" ") + "...";
+
+  let url_name = data.name.replace(/ /g, "-").toLowerCase();
+
   return (
     <>
-      <div className="bg-lightdark border-dark-gray rounded-3xl border-1 md:flex">
+      <a
+        href={`/project/${url_name}`}
+        className="bg-lightdark border-dark-gray rounded-3xl border-1 md:flex"
+      >
         {/* image */}
         <div className="overflow-hidden rounded-t-3xl md:w-6/12 md:rounded-t-none md:rounded-l-3xl">
           {/* image */}
           <img
-            src={showcase}
+            src={project_image}
             alt="Logo"
             className="mx-auto h-full w-auto object-cover"
           />
@@ -21,43 +30,30 @@ export default function PinnedProjectCard() {
           {/* paragraph */}
           <div className="capitalize">
             <h2 className="mb-2 text-xl font-medium tracking-wide text-white lg:text-2xl">
-              Philippine currency identifier
+              {data.name}
             </h2>
             <p className="text-tertiary-white text-sm">
-              Currency recognition app.
+              {data.information.short_description}
             </p>
           </div>
 
           {/* paragraph */}
           <div className="">
             <p className="text-tertiary-white text-sm leading-relaxed font-light">
-              Philippine Currency Identifier is a thesis-developed app that
-              helps visually impaired people in the Philippines identify
-              currency denominations using a...
+              {new_paragraph}
             </p>
           </div>
 
           {/* tags */}
           <div className="">
             <div className="flex flex-wrap gap-3">
-              {/* item */}
-              <ProjectTagItem />
-
-              {/* item */}
-              <ProjectTagItem />
-
-              {/* item */}
-              <ProjectTagItem />
-
-              {/* item */}
-              <ProjectTagItem />
-
-              {/* item */}
-              <ProjectTagItem />
+              {data.information.tags.project.map((tag, index) => (
+                <ProjectTagItem key={index} data={tag} />
+              ))}
             </div>
           </div>
         </div>
-      </div>
+      </a>
     </>
   );
 }
