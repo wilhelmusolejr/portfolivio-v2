@@ -12,19 +12,25 @@ import ServiceItem from "@components/ServiceItem";
 export default function About() {
   let servicesData = [
     {
-      title: "Web Development",
+      title: "Web Developer",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores corporis?",
+      gif_url:
+        "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXFvenA3ZHgxdnlhZWJvNmZleTAzdHh1a2Uzc3hyamhxZWVpc2d2MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qgQUggAC3Pfv687qPC/giphy.gif",
     },
     {
       title: "Web Designer",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores corporis?",
+      gif_url:
+        "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2xpcmc5dnJvd3FpNndnenc3djBwdHhvZGltbjUxM2g4aTFwcmh4ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MvovQGsMBY9H2/giphy.gif",
     },
     {
       title: "Web Automation",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque rem velit eveniet vitae esse, magnam quasi architecto ipsa maiores corporis?",
+      gif_url:
+        "https://cdn.dribbble.com/userupload/29723036/file/original-37272b037a0317dd249bc4759dc16ffe.gif",
     },
   ];
 
@@ -127,13 +133,7 @@ export default function About() {
           {/* Card */}
           {servicesData.map((service, index) => (
             <>
-              <ServiceItem
-                key={index}
-                data={{
-                  title: service.title,
-                  description: service.description,
-                }}
-              />
+              <ServiceItem key={index} data={service} />
             </>
           ))}
         </div>
