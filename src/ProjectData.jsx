@@ -1293,6 +1293,43 @@ export function projects() {
   ];
 }
 
+export function intro_projects() {
+  const intro_projects = all_projects();
+
+  const projects = intro_projects.reduce(
+    (dump, { id, name, information, project_showcase, link }) => {
+      if (project_showcase.is_intro) {
+        if (link.github) {
+          link.github = `${github_url}${link.name}`;
+        }
+        link.project = `${project_url}${link.name}`;
+
+        dump.push({
+          id,
+          name,
+          information: {
+            short_description: information.short_description,
+          },
+          link,
+          project_showcase: {
+            url: `projects/${link.name}/`,
+            is_intro: project_showcase.is_intro,
+          },
+        });
+      }
+      return dump;
+    },
+    [],
+  );
+
+  projects.sort(
+    (a, b) =>
+      a.project_showcase.is_intro.order - b.project_showcase.is_intro.order,
+  );
+
+  return projects;
+}
+
 export function all_projects() {
   return updateProjectLink(getAllProjects());
 }
