@@ -5,7 +5,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 export default function ServiceItem({ data }) {
   return (
-    <div className="border-border-light rounded-lg border-1 p-5 md:w-10/12 md:max-w-xs">
+    <div className="border-border-light rounded-lg border-1 bg-white/5 p-5 md:w-10/12 md:max-w-xs">
       {/* image */}
       {/* <div className="h-72 rounded-lg bg-slate-50"></div> */}
       <div className="flex h-72 items-center justify-center overflow-hidden rounded-lg bg-gray-100">
