@@ -12,7 +12,6 @@ export default function Project() {
   const { name } = useParams();
 
   const project = getProject(name);
-  // const project_image = `/assets/${project.project_showcase.url}${project.project_showcase.is_other.image}`;
   const project_image = `/assets/${project.project_showcase.url}${project.project_showcase.project.banner_image}`;
 
   function isNearWhiteOrBlack(hex) {
@@ -196,7 +195,7 @@ export default function Project() {
       </div>
 
       {/* album */}
-      <div className="scrollbar-hide mx-auto w-10/12 overflow-x-auto lg:overflow-x-visible">
+      <div className="scrollbar-hide mx-auto w-10/12 max-w-5xl overflow-x-auto lg:overflow-x-visible">
         <div className="flex gap-5 lg:flex-wrap lg:justify-center">
           {project.project_showcase.project.screenshot.map(
             (screenshot, index) => (

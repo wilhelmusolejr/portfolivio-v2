@@ -8,7 +8,7 @@ export default function PinnedProjectCard({ data }) {
   const new_paragraph =
     data.information.description.split(" ").slice(0, 20).join(" ") + "...";
 
-  let url_name = data.name.replace(/ /g, "-").toLowerCase();
+  let url_name = data.link.name;
 
   return (
     <>

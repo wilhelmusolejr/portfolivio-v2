@@ -1,40 +1,12 @@
 import "../App.css";
 
-import pinas from "@assets/projects/pinas_mock.webp";
-import philippine from "@assets/projects/philippine_mock.webp";
-import quiz from "@assets/projects/quiz_mock.webp";
-
 import ProjectHighlight from "@components/ProjectHighlight";
 import Navigator from "@components/Navigator";
 
+import { intro_projects } from "../ProjectData";
+
 function App() {
-  const highlightProjectsObj = [
-    {
-      image: pinas,
-      title: "Pinasmura PH",
-      description: "Online consultation clinic",
-    },
-    {
-      image: philippine,
-      title: "Philippines currency recognition",
-      description: "Online consultation clinic",
-    },
-    {
-      image: quiz,
-      title: "Quiztwist",
-      description: "Online consultation clinic",
-    },
-    {
-      image: pinas,
-      title: "Pinasmura PH",
-      description: "Online consultation clinic",
-    },
-    {
-      image: philippine,
-      title: "Philippines currency recognition",
-      description: "Online consultation clinic",
-    },
-  ];
+  const introProjects = intro_projects();
 
   return (
     <>
@@ -52,7 +24,7 @@ function App() {
       {/* ALBUM */}
       <div className="project-album container mx-auto my-14 flex max-w-7xl flex-wrap justify-center gap-30 px-10 md:gap-12 lg:gap-20">
         {/* Item */}
-        {highlightProjectsObj.map((project, index) => (
+        {introProjects.map((project, index) => (
           <>
             {/* item */}
             <ProjectHighlight data={project} key={index} />

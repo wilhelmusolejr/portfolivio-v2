@@ -1,13 +1,13 @@
 import React from "react";
 
 import Navigator from "@components/Navigator";
-import TechItem from "../components/TechItem";
-import TechHeading from "../components/TechHeading";
-import TechItemParent from "../components/TechItemParent";
-import SectionLine from "../components/SectionLine";
-import WorkItem from "../components/WorkItem";
-import InterestItem from "../components/InterestItem";
-import ServiceItem from "../components/ServiceItem";
+import TechItem from "@components/TechItem";
+import TechHeading from "@components/TechHeading";
+import TechItemParent from "@components/TechItemParent";
+import SectionLine from "@components/SectionLine";
+import WorkItem from "@components/WorkItem";
+import InterestItem from "@components/InterestItem";
+import ServiceItem from "@components/ServiceItem";
 
 export default function About() {
   let servicesData = [
