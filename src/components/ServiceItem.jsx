@@ -27,20 +27,14 @@ export default function ServiceItem({ data }) {
         {/* Check list */}
         <div className="flex flex-col gap-3 capitalize">
           {/* Item */}
-          <div className="flex items-center gap-3">
-            <div className="">
-              <FontAwesomeIcon icon={faCheck} className="text-lg" />
+          {data.list.map((item, index) => (
+            <div className="flex items-center gap-3" key={index}>
+              <div className="">
+                <FontAwesomeIcon icon={faCheck} className="text-lg" />
+              </div>
+              <p className="text-font-light">{item}</p>
             </div>
-            <p className="text-font-light">Task automation</p>
-          </div>
-
-          {/* Item */}
-          <div className="flex items-center gap-3">
-            <div className="">
-              <FontAwesomeIcon icon={faCheck} className="text-lg" />
-            </div>
-            <p className="text-font-light">Efficiency tools</p>
-          </div>
+          ))}
         </div>
       </div>
     </div>
