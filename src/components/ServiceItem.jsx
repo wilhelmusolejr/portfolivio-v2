@@ -32,7 +32,7 @@ export default function ServiceItem({ data }) {
               <div className="">
                 <FontAwesomeIcon icon={faCheck} className="text-lg" />
               </div>
-              <p className="text-font-light">{item}</p>
+              <p className="text-font-light font-extralight">{item}</p>
             </div>
           ))}
         </div>
