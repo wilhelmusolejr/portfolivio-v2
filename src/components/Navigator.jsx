@@ -1,8 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import NavigatorLink from "./NavigatorLink";
 
 export default function Navigator() {
+  const location = useLocation();
+
   return (
     <nav className="sticky top-5 z-20 container mx-auto my-14 w-10/12 rounded-md px-5 py-7 shadow-lg md:px-7">
       <div className="flex items-center justify-between">
@@ -22,8 +25,19 @@ export default function Navigator() {
             <FontAwesomeIcon icon={faBars} className="text-3xl" />
           </div>
           <div className="hidden items-center justify-center gap-5 text-xl md:flex">
-            <Link to="/about">About</Link>
-            <Link to="/projects">Project</Link>
+            {/* about */}
+            <NavigatorLink CurrentPath={location.pathname} location="about" />
+
+            {/* project */}
+            <NavigatorLink
+              CurrentPath={location.pathname}
+              location="projects"
+            />
+
+            <div className="bg-tertiary-white h-7 w-px"></div>
+
+            {/* Resume */}
+            <NavigatorLink CurrentPath={location.pathname} location="resume" />
           </div>
         </div>
       </div>
