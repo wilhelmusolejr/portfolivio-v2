@@ -2,7 +2,7 @@ import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import Navigator from "@components/Navigator";
 import SectionLine from "../components/SectionLine";
@@ -73,10 +73,10 @@ export default function Project() {
 
       <div className="container mx-auto mt-32 mb-10 w-10/12 max-w-5xl md:mb-16">
         {/* BACK */}
-        <div className="mb-5 flex items-center gap-2">
+        <Link to={`/projects`} className="mb-5 flex items-center gap-2">
           <FontAwesomeIcon icon={faArrowLeft} />
           <span>Back</span>
-        </div>
+        </Link>
 
         {/* HEADING */}
         <h1 className="mb-2 text-2xl font-bold tracking-wide text-white lg:text-4xl">
@@ -170,7 +170,11 @@ export default function Project() {
             Demo
           </h2>
 
-          <a href="#" className="text-tertiary-white font-light underline">
+          <a
+            href={project.link.external}
+            target="_blank"
+            className="text-tertiary-white font-light underline"
+          >
             {project.link.external
               ? project.link.external
               : "No demo available"}
