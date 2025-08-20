@@ -37,7 +37,13 @@ export default function Navigator() {
             <div className="bg-tertiary-white h-7 w-px"></div>
 
             {/* Resume */}
-            <NavigatorLink CurrentPath={location.pathname} location="resume" />
+            <a
+              href="https://drive.google.com/file/d/1OYfzSr7biSVoiTU052svmt24gvcfev4p/view?usp=sharing"
+              target="_blank"
+              className="transition-colors duration-200 hover:text-yellow-400 hover:underline"
+            >
+              Resume
+            </a>
           </div>
         </div>
       </div>
