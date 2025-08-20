@@ -1,6 +1,7 @@
 import React from "react";
 
 import ProjectTagItem from "./ProjectTagItem";
+import LazyImage from "./LazyImage";
 
 export default function PinnedProjectCard({ data }) {
   const project_image = `/assets/${data.project_showcase.url}${data.project_showcase.is_pinned.image}`;
@@ -10,19 +11,20 @@ export default function PinnedProjectCard({ data }) {
 
   let url_name = data.link.name;
 
+  // -------------------------
+
   return (
     <>
       <a
         href={`/project/${url_name}`}
-        className="bg-lightdark border-dark-gray rounded-3xl border-1 md:flex"
+        className="bg-lightdark border-dark-gray min-h-80 w-full rounded-3xl border-1 md:flex"
       >
-        {/* image */}
-        <div className="overflow-hidden rounded-t-3xl md:w-6/12 md:rounded-t-none md:rounded-l-3xl">
-          {/* image */}
-          <img
+        {/* image parent */}
+        <div className="min-h-lg relative min-h-80 overflow-hidden rounded-t-3xl md:w-6/12 md:rounded-t-none md:rounded-l-3xl">
+          <LazyImage
             src={project_image}
             alt="Logo"
-            className="mx-auto h-full w-auto object-cover"
+            className="h-full w-full rounded-s-2xl object-cover"
           />
         </div>
         {/* text */}
