@@ -1,4 +1,5 @@
 import React from "react";
+import LazyImage from "./LazyImage";
 
 export default function OtherProjectCard({ data }) {
   const project_image = `/assets/${data.project_showcase.url}${data.project_showcase.is_other.image}`;
@@ -7,11 +8,11 @@ export default function OtherProjectCard({ data }) {
 
   return (
     <>
-      <a href={`/project/${url_name}`} className="">
-        <div className="h-48 overflow-hidden">
-          <img
+      <a href={`/project/${url_name}`} className="w-full md:w-5/12 lg:w-3/12">
+        <div className="relative h-48 overflow-hidden">
+          <LazyImage
             src={project_image}
-            alt="Logo"
+            alt={data.name}
             className="mx-auto h-full w-auto rounded-lg object-cover"
           />
         </div>
