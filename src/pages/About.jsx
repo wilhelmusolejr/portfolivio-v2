@@ -446,8 +446,8 @@ export default function About() {
         </p>
 
         <div className="mt-10">
-          <p className="uppercase">get in touch (Click to copy)</p>
-          <p className="hidden text-2xl font-bold text-white md:text-4xl">
+          <p className="mb-5 uppercase">get in touch (Click to copy)</p>
+          <p className="text-lg font-bold text-white md:text-4xl lg:text-5xl">
             wilhelmus.olejr@gmail.com
           </p>
         </div>
