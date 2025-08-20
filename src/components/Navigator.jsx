@@ -11,12 +11,12 @@ export default function Navigator() {
       <div className="flex items-center justify-between">
         {/* Logo */}
         <div className="">
-          <a
-            href="/"
+          <Link
+            to="/"
             className="text-lg font-bold tracking-wider text-white uppercase sm:text-2xl"
           >
             Wilhelmus Ole
-          </a>
+          </Link>
         </div>
 
         {/* Nav Link */}
