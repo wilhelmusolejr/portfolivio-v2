@@ -820,7 +820,7 @@ function getAllProjects() {
         },
       },
       link: {
-        name: "pennywise",
+        name: "pennywise-ph",
         github: undefined,
         project: undefined,
         external: null,
@@ -1149,7 +1149,7 @@ function getAllProjects() {
         },
       },
       link: {
-        name: "microsoft-reward-bot",
+        name: "m1cros0ft-r3w4rd-bot",
         github: undefined,
         project: undefined,
         external: null,

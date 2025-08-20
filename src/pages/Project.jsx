@@ -12,6 +12,7 @@ export default function Project() {
   const { name } = useParams();
 
   const project = getProject(name);
+
   const project_image = `/assets/${project.project_showcase.url}${project.project_showcase.project.banner_image}`;
 
   function isNearWhiteOrBlack(hex) {
@@ -55,16 +56,18 @@ export default function Project() {
 
   let colors_background = [];
 
-  if (project.design.color.length < 0) {
-    colors_background = Array.from({ length: 5 }, getRandomColor);
-  } else {
-    colors_background = project.design.color.filter(
-      (c) => isNearWhiteOrBlack(c) === "good color",
-    );
+  if (project.design?.color) {
+    if (project.design.color.length < 0) {
+      colors_background = Array.from({ length: 5 }, getRandomColor);
+    } else {
+      colors_background = project.design.color.filter(
+        (c) => isNearWhiteOrBlack(c) === "good color",
+      );
 
-    colors_background.unshift("#fff");
-    colors_background.push("#fff");
-    colors_background.push("#000");
+      colors_background.unshift("#fff");
+      colors_background.push("#fff");
+      colors_background.push("#000");
+    }
   }
 
   return (
@@ -109,42 +112,48 @@ export default function Project() {
       </div>
 
       {/* details */}
-      <div className="container mx-auto mt-24 mb-12 flex w-10/12 max-w-5xl flex-col gap-12">
+      <div className="s container mx-auto mt-24 mb-12 flex w-10/12 max-w-5xl flex-col gap-12">
         {/* ITEM - Overview */}
-        <div className="">
-          {/* HEADING */}
-          <h2 className="capiltalize mb-3 text-2xl font-medium tracking-wide text-white">
-            Overview
-          </h2>
+        {project.information.description && (
+          <div className="">
+            {/* HEADING */}
+            <h2 className="capiltalize mb-3 text-2xl font-medium tracking-wide text-white">
+              Overview
+            </h2>
 
-          {/* overview */}
-          <div className="flex flex-col gap-5">
-            {project.information.description.map((item, index) => (
-              <p
-                key={index}
-                className="text-tertiary-white leading-relaxed font-light"
-              >
-                {item}
-              </p>
-            ))}
+            {/* overview */}
+            <div className="flex flex-col gap-5">
+              {project.information.description.map((item, index) => (
+                <p
+                  key={index}
+                  className="text-tertiary-white leading-relaxed font-light"
+                >
+                  {item}
+                </p>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* ITEM - Features */}
-        <div className="">
-          {/* HEADING */}
-          <h2 className="capiltalize mb-3 text-2xl font-medium tracking-wide text-white">
-            Features
-          </h2>
+        {project.information.features && (
+          <>
+            <div className="">
+              {/* HEADING */}
+              <h2 className="capiltalize mb-3 text-2xl font-medium tracking-wide text-white">
+                Features
+              </h2>
 
-          <ul className="text-tertiary-white ms-5 flex list-disc flex-col gap-2 leading-relaxed font-light">
-            {project.information.features.map((feature, index) => (
-              <li key={index} className="">
-                <p>{feature}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
+              <ul className="text-tertiary-white ms-5 flex list-disc flex-col gap-2 leading-relaxed font-light">
+                {project.information.features?.map((feature, index) => (
+                  <li key={index} className="">
+                    <p>{feature}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
 
         {/* ITEM - Contact */}
         <div className="">
@@ -164,55 +173,62 @@ export default function Project() {
         </div>
 
         {/* ITEM - Demo */}
-        <div className="">
-          {/* HEADING */}
-          <h2 className="capiltalize mb-3 text-2xl font-medium tracking-wide text-white">
-            Demo
-          </h2>
+        {project.link.external && (
+          <div className="">
+            {/* HEADING */}
+            <h2 className="capiltalize mb-3 text-2xl font-medium tracking-wide text-white">
+              Demo
+            </h2>
 
-          <a
-            href={project.link.external}
-            target="_blank"
-            className="text-tertiary-white font-light underline"
-          >
-            {project.link.external
-              ? project.link.external
-              : "No demo available"}
-          </a>
-        </div>
+            <a
+              href={project.link.external}
+              target="_blank"
+              className="text-tertiary-white font-light lowercase underline"
+            >
+              {project.link.external
+                ? project.link.external
+                : "No demo available"}
+            </a>
+          </div>
+        )}
       </div>
 
       {/* tags */}
-      <div className="container mx-auto my-32 max-w-5xl">
-        <div className="mx-auto flex w-10/12 flex-wrap items-center justify-center gap-3">
-          {project.information.tags.technology.map((tag, index) => (
-            <a
-              href={`https://www.google.com/search?q=${tag}`}
-              target="_blank"
-              key={index}
-              className="border-light-white bg-third-black w-fit rounded-md border-1 px-3 py-2"
-            >
-              <p className="text-tertiary-white font-light">{tag}</p>
-            </a>
-          ))}
+      {project.information.tags.technology && (
+        <div className="container mx-auto my-32 max-w-5xl">
+          <div className="mx-auto flex w-10/12 flex-wrap items-center justify-center gap-3">
+            {project.information.tags.technology.map((tag, index) => (
+              <a
+                href={`https://www.google.com/search?q=${tag}`}
+                target="_blank"
+                key={index}
+                className="border-light-white bg-third-black w-fit rounded-md border-1 px-3 py-2"
+              >
+                <p className="text-tertiary-white font-light">{tag}</p>
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* album */}
-      <div className="scrollbar-hide mx-auto w-10/12 max-w-5xl overflow-x-auto lg:overflow-x-visible">
-        <div className="flex gap-5 lg:flex-wrap lg:justify-center">
-          {project.project_showcase.project.screenshot.map(
-            (screenshot, index) => (
-              <img
-                key={index}
-                src={`/assets/${project.project_showcase.url}${screenshot}`}
-                alt={`Screenshot ${index + 1}`}
-                className="h-48 w-56 rounded-lg object-cover lg:flex-shrink"
-              />
-            ),
-          )}
+      {project.project_showcase.project.screenshot.length > 0 && (
+        <div className="scrollbar-hide mx-auto w-10/12 max-w-5xl overflow-x-auto lg:overflow-x-visible">
+          {/* parent */}
+          <div className="flex gap-5 lg:flex-wrap lg:justify-center">
+            {project.project_showcase.project.screenshot.map(
+              (screenshot, index) => (
+                <img
+                  key={index}
+                  src={`/assets/${project.project_showcase.url}${screenshot}`}
+                  alt={`Screenshot ${index + 1}`}
+                  className="h-48 w-56 rounded-lg object-cover lg:flex-shrink"
+                />
+              ),
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       <br />
       <br />
@@ -225,17 +241,19 @@ export default function Project() {
       <div className="container mx-auto mb-32 w-10/12 max-w-5xl">
         <div className="flex flex-wrap gap-15 md:justify-center lg:gap-20">
           {/* FONTS */}
-          <div className="capitalize">
-            <h3 className="mb-7 text-2xl">Fonts</h3>
-            {project.design.font.map((font, index) => (
-              <p
-                key={index}
-                className="text-tertiary-white mb-2 font-light tracking-wider"
-              >
-                {font}
-              </p>
-            ))}
-          </div>
+          {project.design?.font && (
+            <div className="capitalize">
+              <h3 className="mb-7 text-2xl">Fonts</h3>
+              {project.design.font.map((font, index) => (
+                <p
+                  key={index}
+                  className="text-tertiary-white mb-2 font-light tracking-wider"
+                >
+                  {font}
+                </p>
+              ))}
+            </div>
+          )}
 
           {/* LANGUAGES */}
           <div className="">
@@ -282,24 +300,26 @@ export default function Project() {
           </div>
 
           {/* Colors */}
-          <div className="">
-            <h3 className="mb-7 text-2xl">Colors</h3>
-            <div className="flex flex-col gap-4">
-              {project.design.color.map((color, index) => (
-                <div key={index} className="flex items-center gap-4">
-                  {/* box */}
-                  <div
-                    className={`h-10 w-20 rounded-lg border-2 border-black/50`}
-                    style={{ backgroundColor: color }}
-                  ></div>
-                  {/* name */}
-                  <p className="text-tertiary-white font-light tracking-wider">
-                    {color}
-                  </p>
-                </div>
-              ))}
+          {project.design?.color && (
+            <div className="">
+              <h3 className="mb-7 text-2xl">Colors</h3>
+              <div className="flex flex-col gap-4">
+                {project.design.color.map((color, index) => (
+                  <div key={index} className="flex items-center gap-4">
+                    {/* box */}
+                    <div
+                      className={`h-10 w-20 rounded-lg border-2 border-black/50`}
+                      style={{ backgroundColor: color }}
+                    ></div>
+                    {/* name */}
+                    <p className="text-tertiary-white font-light tracking-wider">
+                      {color}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Tags */}
           <div className="">
