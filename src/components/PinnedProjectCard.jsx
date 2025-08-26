@@ -18,10 +18,10 @@ export default function PinnedProjectCard({ data }) {
     <>
       <Link
         to={`/project/${url_name}`}
-        className="bg-lightdark border-dark-gray min-h-80 w-full rounded-3xl border-1 md:flex"
+        className="group bg-lightdark border-dark-gray hover:border-primary hover:shadow-primary/20 min-h-80 w-full rounded-3xl border transition-all duration-300 ease-in-out hover:scale-[1.02] hover:border-white hover:shadow-lg md:flex"
       >
         {/* image parent */}
-        <div className="min-h-lg relative min-h-80 overflow-hidden rounded-t-3xl md:w-6/12 md:rounded-t-none md:rounded-l-3xl">
+        <div className="relative min-h-80 overflow-hidden rounded-t-3xl md:w-6/12 md:rounded-t-none md:rounded-l-3xl">
           <LazyImage
             src={project_image}
             alt="Logo"
