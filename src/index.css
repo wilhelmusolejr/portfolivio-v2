@@ -49,7 +49,7 @@ footer {
 
 /* --------------------- */
 /* Medium devices (tablets) */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .project-album .project-item:nth-child(even) {
     top: 0;
   }

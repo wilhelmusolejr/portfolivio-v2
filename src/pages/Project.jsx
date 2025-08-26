@@ -2,7 +2,7 @@ import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 import Navigator from "@components/Navigator";
 import SectionLine from "../components/SectionLine";
@@ -12,6 +12,7 @@ export default function Project() {
   const { name } = useParams();
 
   const project = getProject(name);
+  const navigate = useNavigate();
 
   const project_image = `/assets/${project.project_showcase.url}${project.project_showcase.project.banner_image}`;
 
@@ -76,10 +77,13 @@ export default function Project() {
 
       <div className="container mx-auto mt-32 mb-10 w-10/12 max-w-5xl md:mb-16">
         {/* BACK */}
-        <Link to={`/projects`} className="mb-5 flex items-center gap-2">
+        <button
+          onClick={() => navigate(-1)}
+          className="mb-5 flex cursor-pointer items-center gap-2"
+        >
           <FontAwesomeIcon icon={faArrowLeft} />
           <span>Back</span>
-        </Link>
+        </button>
 
         {/* HEADING */}
         <h1 className="mb-2 text-2xl font-bold tracking-wide text-white lg:text-4xl">
