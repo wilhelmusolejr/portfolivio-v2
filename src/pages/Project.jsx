@@ -206,7 +206,7 @@ export default function Project() {
                 href={`https://www.google.com/search?q=${tag}`}
                 target="_blank"
                 key={index}
-                className="border-light-white bg-third-black w-fit rounded-md border-1 px-3 py-2"
+                className="border-light-white bg-third-black hover:bg-lightdark w-fit rounded-md border px-3 py-2 transition-all duration-300 ease-in-out hover:scale-105 hover:border-white"
               >
                 <p className="text-tertiary-white font-light">{tag}</p>
               </a>
