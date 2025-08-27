@@ -266,7 +266,7 @@ export default function Project() {
           onClick={closeImagePreview}
           className="close-image-preview fixed inset-0 z-20 flex items-center justify-center bg-black/50"
         >
-          <div className="arrow-left flex flex-1 items-center justify-center text-xl">
+          <div className="arrow-left flex flex-1 cursor-pointer items-center justify-center text-xl">
             <FontAwesomeIcon icon={faArrowLeft} />
           </div>
           <img
@@ -274,7 +274,7 @@ export default function Project() {
             alt="CourseMatch showcase"
             className="w-8/12"
           />
-          <div className="arrow-right flex flex-1 items-center justify-center text-xl">
+          <div className="arrow-right flex flex-1 cursor-pointer items-center justify-center text-xl">
             <FontAwesomeIcon icon={faArrowRight} />
           </div>
         </div>
