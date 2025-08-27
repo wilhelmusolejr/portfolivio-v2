@@ -11,7 +11,7 @@ export default function ProjectHighlight({ data }) {
       <div className="project-item w-full max-w-lg md:mb-10 md:w-5/12 lg:w-5/12 lg:gap-20">
         {/* image parent */}
         <Link to={`/project/${url_name}`}>
-          <div className="mx-auto h-[300px] overflow-hidden rounded-4xl md:h-[400px] lg:h-[600px]">
+          <div className="mx-auto h-[400px] overflow-hidden rounded-4xl lg:h-[600px]">
             <img
               src={project_image}
               alt={`${data.name} image mock up`}
