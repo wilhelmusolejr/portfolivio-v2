@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -11,6 +11,9 @@ import { getProject } from "../ProjectData";
 export default function Project() {
   const { name } = useParams();
   const [currentImage, setCurrentImage] = useState(null);
+  const [languages, setLanguages] = useState([]);
+
+  const languagesColor = ["bg-blue-400", "bg-red-500", "bg-yellow-400"];
 
   const project = getProject(name);
   const navigate = useNavigate();
@@ -20,6 +23,7 @@ export default function Project() {
   let album = project.project_showcase.project.screenshot;
   let albumLength = album.length;
 
+  // Color related background
   function isNearWhiteOrBlack(hex) {
     const cleanHex = hex.replace("#", "");
     const r = parseInt(cleanHex.substring(0, 2), 16);
@@ -75,6 +79,7 @@ export default function Project() {
     }
   }
 
+  // ALBUM PREVIEW
   function closeImagePreview(e) {
     if (e.target.tagName === "IMG" || albumLength < 1) return;
 
@@ -98,6 +103,45 @@ export default function Project() {
       setCurrentImage(album[currentIndex]);
     }
   }
+
+  // GITHUB Languages
+  useEffect(() => {
+    const fetchLanguages = async () => {
+      try {
+        const response = await fetch(
+          `https://api.github.com/repos/wilhelmusolejr/${project.link.name}/languages`,
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+
+        const totalLines = Object.values(data).reduce(
+          (acc, value) => acc + value,
+          0,
+        );
+
+        const languageArray = Object.entries(data).map(([language, lines]) => ({
+          language,
+          percentage: ((lines / totalLines) * 100).toFixed(0), // Calculate percentage and format to 2 decimal places
+        }));
+
+        // Sort the array by percentage in descending order and take the top 3
+        const topLanguages = languageArray
+          .sort((a, b) => b.percentage - a.percentage)
+          .slice(0, 3);
+
+        setLanguages(topLanguages);
+      } catch (error) {
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error,
+        );
+      }
+    };
+
+    fetchLanguages();
+  }, [project.link.name]);
 
   return (
     <>
@@ -129,7 +173,7 @@ export default function Project() {
         {/* img */}
         <img
           src={project_image}
-          alt=""
+          alt="Project showcase/banner"
           className="z-10 h-full w-auto rounded-2xl object-contain"
         />
         {/* bg */}
@@ -247,19 +291,21 @@ export default function Project() {
       {albumLength > 0 && (
         <div className="scrollbar-hide mx-auto w-10/12 max-w-5xl overflow-x-auto lg:overflow-x-visible">
           {/* parent */}
-          <div className="flex gap-5 lg:flex-wrap lg:justify-center">
+          <div className="flex gap-5 lg:grid lg:grid-cols-4 lg:flex-wrap lg:justify-center">
             {album.map((screenshot, index) => (
               <img
                 key={index}
                 src={`/assets/${project.project_showcase.url}${screenshot}`}
                 alt={`Screenshot ${index + 1}`}
-                className="h-48 w-56 cursor-pointer rounded-lg object-cover lg:flex-shrink"
+                className="h-48 w-56 cursor-pointer rounded-lg object-cover lg:w-full lg:flex-shrink"
                 onClick={() => setCurrentImage(`${screenshot}`)}
               />
             ))}
           </div>
         </div>
       )}
+
+      <SectionLine />
 
       {currentImage && (
         <div
@@ -288,6 +334,7 @@ export default function Project() {
 
       <SectionLine />
 
+      {/* infos */}
       <div className="container mx-auto mb-32 w-10/12 max-w-5xl">
         <div className="flex flex-wrap gap-15 md:justify-center lg:gap-20">
           {/* FONTS */}
@@ -306,48 +353,39 @@ export default function Project() {
           )}
 
           {/* LANGUAGES */}
-          <div className="">
-            <h3 className="mb-7 text-2xl">Languages</h3>
+          {languages.length > 0 && (
+            <div className="w-60">
+              <h3 className="mb-7 text-2xl">Languages</h3>
 
-            <div className="mb-5 flex h-2 gap-1">
-              <div className="h-2 w-8/12 rounded-s-lg bg-blue-400"></div>
-              <div className="h-2 w-3/12 bg-red-500"></div>
-              <div className="h-2 w-1/12 rounded-e-lg bg-yellow-400"></div>
-            </div>
+              {/* graph color */}
+              <div className="mb-5 flex h-2 gap-1">
+                {languages.map((lang, index) => (
+                  <div
+                    key={index}
+                    style={{ width: `${lang.percentage}%` }}
+                    className={`h-2 ${index === 0 ? "rounded-s-lg" : ""} ${index === 2 ? "rounded-e-lg" : ""} ${languagesColor[index]}`}
+                  ></div>
+                ))}
+              </div>
 
-            <div className="mt-4 flex flex-wrap gap-3">
-              {/* item */}
-              <div className="flex items-center gap-3">
-                {/* circle */}
-                <div className="h-3 w-3 rounded-full bg-blue-400"></div>
-                {/* data */}
-                <div className="flex items-center gap-2">
-                  <p>PHP</p>
-                  <p className="text-xs">66%</p>
-                </div>
-              </div>
-              {/* item */}
-              <div className="flex items-center gap-3">
-                {/* circle */}
-                <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                {/* data */}
-                <div className="flex items-center gap-2">
-                  <p>PHP</p>
-                  <p className="text-xs">66%</p>
-                </div>
-              </div>
-              {/* item */}
-              <div className="flex items-center gap-3">
-                {/* circle */}
-                <div className="h-3 w-3 rounded-full bg-yellow-400"></div>
-                {/* data */}
-                <div className="flex items-center gap-2">
-                  <p>PHP</p>
-                  <p className="text-xs">66%</p>
-                </div>
+              {/* programming name */}
+              <div className="mt-4 flex flex-wrap gap-3">
+                {languages.map((lang, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    {/* circle */}
+                    <div
+                      className={`h-3 w-3 rounded-full ${languagesColor[index]}`}
+                    ></div>
+                    {/* data */}
+                    <div className="flex items-center gap-2">
+                      <p>{lang.language}</p>
+                      <p className="text-xs">{lang.percentage}%</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          )}
 
           {/* Colors */}
           {project.design?.color && (
