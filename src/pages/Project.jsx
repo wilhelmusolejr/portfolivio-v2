@@ -1,7 +1,7 @@
-import React from "react";
+import { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
 import Navigator from "@components/Navigator";
@@ -10,11 +10,15 @@ import { getProject } from "../ProjectData";
 
 export default function Project() {
   const { name } = useParams();
+  const [currentImage, setCurrentImage] = useState(null);
 
   const project = getProject(name);
   const navigate = useNavigate();
 
   const project_image = `/assets/${project.project_showcase.url}${project.project_showcase.project.banner_image}`;
+
+  let album = project.project_showcase.project.screenshot;
+  let albumLength = album.length;
 
   function isNearWhiteOrBlack(hex) {
     const cleanHex = hex.replace("#", "");
@@ -68,6 +72,30 @@ export default function Project() {
       colors_background.unshift("#fff");
       colors_background.push("#fff");
       colors_background.push("#000");
+    }
+  }
+
+  function closeImagePreview(e) {
+    if (e.target.tagName === "IMG" || albumLength < 1) return;
+
+    if (e.target.classList.contains("close-image-preview")) {
+      setCurrentImage(null);
+    }
+
+    if (e.target.closest(".arrow-left")) {
+      let currentIndex = album.indexOf(currentImage);
+
+      currentIndex = currentIndex === 0 ? albumLength - 1 : currentIndex - 1;
+
+      setCurrentImage(album[currentIndex]);
+    }
+
+    if (e.target.closest(".arrow-right")) {
+      let currentIndex = album.indexOf(currentImage);
+
+      currentIndex = currentIndex === albumLength - 1 ? 0 : currentIndex + 1;
+
+      setCurrentImage(album[currentIndex]);
     }
   }
 
@@ -216,20 +244,38 @@ export default function Project() {
       )}
 
       {/* album */}
-      {project.project_showcase.project.screenshot.length > 0 && (
+      {albumLength > 0 && (
         <div className="scrollbar-hide mx-auto w-10/12 max-w-5xl overflow-x-auto lg:overflow-x-visible">
           {/* parent */}
           <div className="flex gap-5 lg:flex-wrap lg:justify-center">
-            {project.project_showcase.project.screenshot.map(
-              (screenshot, index) => (
-                <img
-                  key={index}
-                  src={`/assets/${project.project_showcase.url}${screenshot}`}
-                  alt={`Screenshot ${index + 1}`}
-                  className="h-48 w-56 rounded-lg object-cover lg:flex-shrink"
-                />
-              ),
-            )}
+            {album.map((screenshot, index) => (
+              <img
+                key={index}
+                src={`/assets/${project.project_showcase.url}${screenshot}`}
+                alt={`Screenshot ${index + 1}`}
+                className="h-48 w-56 cursor-pointer rounded-lg object-cover lg:flex-shrink"
+                onClick={() => setCurrentImage(`${screenshot}`)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {currentImage && (
+        <div
+          onClick={closeImagePreview}
+          className="close-image-preview fixed inset-0 z-20 flex items-center justify-center bg-black/50"
+        >
+          <div className="arrow-left flex flex-1 items-center justify-center text-xl">
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </div>
+          <img
+            src={`/assets/${project.project_showcase.url}${currentImage}`}
+            alt="CourseMatch showcase"
+            className="w-8/12"
+          />
+          <div className="arrow-right flex flex-1 items-center justify-center text-xl">
+            <FontAwesomeIcon icon={faArrowRight} />
           </div>
         </div>
       )}
