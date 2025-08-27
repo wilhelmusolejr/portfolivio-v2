@@ -9,6 +9,8 @@ import WorkItem from "@components/WorkItem";
 import InterestItem from "@components/InterestItem";
 import ServiceItem from "@components/ServiceItem";
 
+import { motion } from "framer-motion";
+
 export default function About() {
   let servicesData = [
     // developer
@@ -263,6 +265,33 @@ export default function About() {
     },
   ];
 
+  const parentVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // delay between items
+      },
+    },
+  };
+
+  const childVariants = {
+    hidden: { opacity: 0, x: -50 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  };
+
+  const animationParagraph = {
+    hidden: { opacity: 0, y: 40 }, // start lower
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
+  const aboutMeParagraphs = [
+    "Kamusta! I’m a recent graduate with a degree in Computer Science. During my studies, I developed strong programming skills and gained hands-on experience through various school projects, including app development, software engineering, and my thesis. Additionally, I have experience as a Freelance Full Stack Web Developer and Web Designer. Along the way, I taught myself web automation, building bots for personal projects.",
+    "I focus on front-end development but I’m comfortable as a full stack developer. I’m passionate about creating websites that are clean, modern, responsive, and easy to use. My goal is to build user-friendly and visually appealing websites that offer a great user experience.",
+    "As a self-taught developer, I know that learning never really stops. Currently, I’m improving my knowledge in MERN and Laravel technologies, applying what I learn to real-world and hobby projects.",
+    "Looking ahead, I’m excited to keep growing, learning new tools, and taking on more complex projects. My goal is to work on projects that make a real difference and have a positive impact, and I’m always open to opportunities to collaborate and create meaningful digital experiences.",
+  ];
+
   return (
     <>
       <Navigator />
@@ -305,51 +334,51 @@ export default function About() {
             <h2>I'm interested in</h2>
 
             {/* Parent */}
-            <div className="mt-5 flex flex-wrap gap-3 font-light capitalize lg:flex-col">
+            <motion.div
+              className="mt-5 flex flex-wrap gap-3 font-light capitalize lg:flex-col"
+              variants={parentVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }} // trigger when 30% is visible
+            >
               {/* Item */}
-              <InterestItem interestName="Web Development" />
-              <InterestItem interestName="Bot Development" />
-              <InterestItem interestName="Web Design" />
-              <InterestItem interestName="Machine learning" />
-            </div>
+              <motion.div variants={childVariants}>
+                <InterestItem interestName="Web Development" />
+              </motion.div>
+              <motion.div variants={childVariants}>
+                <InterestItem interestName="Bot Development" />
+              </motion.div>
+              <motion.div variants={childVariants}>
+                <InterestItem interestName="Web Design" />
+              </motion.div>
+              <motion.div variants={childVariants}>
+                <InterestItem interestName="Machine Learning" />
+              </motion.div>
+            </motion.div>
           </div>
 
           <div className="bg-border-light my-10 hidden h-0.5 w-9/12"></div>
 
           {/* Paragraphs */}
           <div className="text-font-light leading-relaxed lg:mt-0 lg:w-9/12">
-            <div className="flex flex-col gap-6 lg:w-10/12">
+            <motion.div
+              className="flex flex-col gap-6 lg:w-10/12"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={parentVariants}
+              initial="hidden"
+              whileInView="show"
+            >
               {/* items */}
-              <p className="font-extralight">
-                Kamusta! I’m a recent graduate with a degree in Computer
-                Science. During my studies, I developed strong programming
-                skills and gained hands-on experience through various school
-                projects, including app development, software engineering, and
-                my thesis. Additionally, I have experience as a Freelance Full
-                Stack Web Developer and Web Designer. Along the way, I taught
-                myself web automation, building bots for personal projects.
-              </p>
-              <p className="font-extralight">
-                I focus on front-end development but I’m comfortable as a full
-                stack developer. I’m passionate about creating websites that are
-                clean, modern, responsive, and easy to use. My goal is to build
-                user-friendly and visually appealing websites that offer a great
-                user experience.
-              </p>
-              <p className="font-extralight">
-                As a self-taught developer, I know that learning never really
-                stops. Currently, I’m improving my knowledge in MERN and Laravel
-                technologies, applying what I learn to real-world and hobby
-                projects.
-              </p>
-              <p className="font-extralight">
-                Looking ahead, I’m excited to keep growing, learning new tools,
-                and taking on more complex projects. My goal is to work on
-                projects that make a real difference and have a positive impact,
-                and I’m always open to opportunities to collaborate and create
-                meaningful digital experiences.
-              </p>
-            </div>
+              {aboutMeParagraphs.map((paragraph, index) => (
+                <motion.p
+                  key={index}
+                  className="font-extralight"
+                  variants={animationParagraph}
+                >
+                  {paragraph}
+                </motion.p>
+              ))}
+            </motion.div>
           </div>
         </div>
       </div>
