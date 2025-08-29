@@ -275,13 +275,13 @@ export default function About() {
     },
   };
 
-  const childVariants = {
+  const listInterestVariants = {
     hidden: { opacity: 0, x: -50 },
     show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
   };
 
   const animationParagraph = {
-    hidden: { opacity: 0, y: 40 }, // start lower
+    hidden: { opacity: 0, y: 40 },
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
@@ -290,6 +290,13 @@ export default function About() {
     "I focus on front-end development but I’m comfortable as a full stack developer. I’m passionate about creating websites that are clean, modern, responsive, and easy to use. My goal is to build user-friendly and visually appealing websites that offer a great user experience.",
     "As a self-taught developer, I know that learning never really stops. Currently, I’m improving my knowledge in MERN and Laravel technologies, applying what I learn to real-world and hobby projects.",
     "Looking ahead, I’m excited to keep growing, learning new tools, and taking on more complex projects. My goal is to work on projects that make a real difference and have a positive impact, and I’m always open to opportunities to collaborate and create meaningful digital experiences.",
+  ];
+
+  const listInterest = [
+    "Web Development",
+    "Bot Development",
+    "Web Design",
+    "Machine Learning",
   ];
 
   return (
@@ -342,18 +349,11 @@ export default function About() {
               viewport={{ once: true, amount: 0.3 }} // trigger when 30% is visible
             >
               {/* Item */}
-              <motion.div variants={childVariants}>
-                <InterestItem interestName="Web Development" />
-              </motion.div>
-              <motion.div variants={childVariants}>
-                <InterestItem interestName="Bot Development" />
-              </motion.div>
-              <motion.div variants={childVariants}>
-                <InterestItem interestName="Web Design" />
-              </motion.div>
-              <motion.div variants={childVariants}>
-                <InterestItem interestName="Machine Learning" />
-              </motion.div>
+              {listInterest.map((interest, index) => (
+                <motion.div key={index} variants={listInterestVariants}>
+                  <InterestItem interestName={interest} />
+                </motion.div>
+              ))}
             </motion.div>
           </div>
 
