@@ -265,6 +265,23 @@ export default function About() {
     },
   ];
 
+  const aboutMeParagraphs = [
+    "Kamusta! I’m a recent graduate with a degree in Computer Science. During my studies, I developed strong programming skills and gained hands-on experience through various school projects, including app development, software engineering, and my thesis. Additionally, I have experience as a Freelance Full Stack Web Developer and Web Designer. Along the way, I taught myself web automation, building bots for personal projects.",
+    "I focus on front-end development but I’m comfortable as a full stack developer. I’m passionate about creating websites that are clean, modern, responsive, and easy to use. My goal is to build user-friendly and visually appealing websites that offer a great user experience.",
+    "As a self-taught developer, I know that learning never really stops. Currently, I’m improving my knowledge in MERN and Laravel technologies, applying what I learn to real-world and hobby projects.",
+    "Looking ahead, I’m excited to keep growing, learning new tools, and taking on more complex projects. My goal is to work on projects that make a real difference and have a positive impact, and I’m always open to opportunities to collaborate and create meaningful digital experiences.",
+  ];
+
+  const listInterest = [
+    "Web Development",
+    "Bot Development",
+    "Web Design",
+    "Machine Learning",
+  ];
+
+  // ANIMATION
+  // ANIMATION
+  // ANIMATION
   const parentVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -285,19 +302,14 @@ export default function About() {
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
-  const aboutMeParagraphs = [
-    "Kamusta! I’m a recent graduate with a degree in Computer Science. During my studies, I developed strong programming skills and gained hands-on experience through various school projects, including app development, software engineering, and my thesis. Additionally, I have experience as a Freelance Full Stack Web Developer and Web Designer. Along the way, I taught myself web automation, building bots for personal projects.",
-    "I focus on front-end development but I’m comfortable as a full stack developer. I’m passionate about creating websites that are clean, modern, responsive, and easy to use. My goal is to build user-friendly and visually appealing websites that offer a great user experience.",
-    "As a self-taught developer, I know that learning never really stops. Currently, I’m improving my knowledge in MERN and Laravel technologies, applying what I learn to real-world and hobby projects.",
-    "Looking ahead, I’m excited to keep growing, learning new tools, and taking on more complex projects. My goal is to work on projects that make a real difference and have a positive impact, and I’m always open to opportunities to collaborate and create meaningful digital experiences.",
-  ];
-
-  const listInterest = [
-    "Web Development",
-    "Bot Development",
-    "Web Design",
-    "Machine Learning",
-  ];
+  const serviceAnimationContainer = {
+    hidden: { opacity: 1 },
+    show: { opacity: 1, transition: { staggerChildren: 0.2 } },
+  };
+  const serviceAnimationItem = {
+    hidden: { opacity: 0, y: 40 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
 
   return (
     <>
@@ -314,13 +326,19 @@ export default function About() {
           {/* Text */}
           <div className="mt-0 lg:w-9/12">
             {/* Heading */}
-            <h1 className="text-2xl leading-normal md:text-4xl">
+            <motion.h1
+              className="text-2xl leading-normal md:text-4xl"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
               Hey, I'm{" "}
               <span className="font-bold tracking-wide uppercase">
                 Wilhelmus Ole
               </span>{" "}
               <br />a software developer from Philippines.
-            </h1>
+            </motion.h1>
 
             {/* Paragraph */}
             <p className="text-font-light mt-10 text-lg leading-relaxed font-extralight lg:w-10/12">
@@ -387,23 +405,39 @@ export default function About() {
 
       {/* SERVICES */}
       <div className="container mx-auto w-10/12 max-w-6xl">
-        <div className="flex flex-wrap justify-center gap-10">
+        <motion.div
+          className="flex flex-wrap justify-center gap-10"
+          variants={serviceAnimationContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {/* Card */}
           {servicesData.map((service, index) => (
             <>
-              <ServiceItem key={index} data={service} />
+              <ServiceItem
+                key={index}
+                data={service}
+                variants={serviceAnimationItem}
+              />
             </>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <SectionLine />
 
       {/* TECHNOLOGIES */}
       <div className="container mx-auto mt-36 w-10/12 max-w-5xl">
-        <h2 className="mb-24 max-w-lg text-center text-xl leading-relaxed md:mx-auto md:w-10/12 md:text-2xl">
+        <motion.h2
+          className="mb-32 max-w-lg text-center text-xl leading-relaxed md:mx-auto md:w-10/12 md:text-2xl"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           Below are the technologies I have worked with and am still learning
-        </h2>
+        </motion.h2>
 
         <div className="mt-10 flex flex-col gap-12">
           {technologies.map((technology, index) => (
@@ -434,24 +468,40 @@ export default function About() {
         <div className="flex flex-col lg:flex-row">
           {/* LEFT */}
           <div className="border-border-superlight flex h-[40vh] w-full items-center justify-center rounded-t-lg border-1 bg-white/5 text-center lg:h-[60vh] lg:rounded-s-lg lg:rounded-r-none">
-            <h2 className="text-2xl font-semibold uppercase md:text-3xl">
+            <motion.h2
+              className="text-2xl font-semibold uppercase md:text-3xl"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
               Work experience
-            </h2>
+            </motion.h2>
           </div>
           {/* RIGHT */}
           <div className="border-border-superlight flex h-[60vh] w-full flex-col justify-between rounded-b-lg border-1 bg-black px-4 py-10 md:px-5 lg:rounded-s-none lg:rounded-e-lg">
-            <div className="flex flex-col gap-5">
-              {/* Item */}
-              <WorkItem
-                workName="Freelance Web Developer"
-                workDate="Jan 2023 - Mar 2024"
-              />
+            <div
+              className="flex flex-col gap-5"
+              variants={parentVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }} // trigger when 30% is visible
+            >
+              <motion.div variants={listInterestVariants}>
+                {/* Item */}
+                <WorkItem
+                  workName="Freelance Web Developer"
+                  workDate="Jan 2023 - Mar 2024"
+                />
+              </motion.div>
 
-              {/* Item */}
-              <WorkItem
-                workName="Freelance Web Developer"
-                workDate="Jan 2023 - Mar 2024"
-              />
+              <motion.div variants={listInterestVariants}>
+                {/* Item */}
+                <WorkItem
+                  workName="Freelance Web Developer"
+                  workDate="Jan 2023 - Mar 2024"
+                />
+              </motion.div>
             </div>
 
             <div className="text-center">

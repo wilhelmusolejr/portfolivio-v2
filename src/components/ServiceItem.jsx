@@ -3,9 +3,14 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-export default function ServiceItem({ data }) {
+import { motion } from "framer-motion";
+
+export default function ServiceItem({ data, variants }) {
   return (
-    <div className="border-border-light rounded-lg border-1 bg-white/5 p-5 md:w-10/12 md:max-w-xs">
+    <motion.div
+      variants={variants}
+      className="border-border-light rounded-lg border-1 bg-white/5 p-5 md:w-10/12 md:max-w-xs"
+    >
       {/* image */}
       {/* <div className="h-72 rounded-lg bg-slate-50"></div> */}
       <div className="flex h-72 items-center justify-center overflow-hidden rounded-lg bg-gray-100">
@@ -37,6 +42,6 @@ export default function ServiceItem({ data }) {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
