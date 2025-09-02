@@ -1,14 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function ProjectHighlight({ data }) {
+import { motion } from "framer-motion";
+
+export default function ProjectHighlight({ data, index }) {
   const project_image = `/assets/${data.project_showcase.url}${data.project_showcase.is_intro.image}`;
 
   let url_name = data.link.name;
 
+  const ltrItem = {
+    hidden: { opacity: 0, x: -100 }, // start left + invisible
+    show: {
+      opacity: 1,
+      x: 0, // slide to place
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const rtlItem = {
+    hidden: { opacity: 0, x: 100 }, // start right + invisible
+    show: {
+      opacity: 1,
+      x: 0, // slide to place
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
     <>
-      <div className="project-item w-full max-w-lg md:mb-10 md:w-5/12 lg:w-5/12 lg:gap-20">
+      <motion.div
+        variants={index % 2 === 0 ? ltrItem : rtlItem}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }} // triggers when 20% is visible
+        className="project-item w-full max-w-lg md:mb-10 md:w-5/12 lg:w-5/12 lg:gap-20"
+      >
         {/* image parent */}
         <Link to={`/project/${url_name}`}>
           <div className="mx-auto h-[400px] overflow-hidden rounded-4xl lg:h-[600px]">
@@ -27,7 +53,7 @@ export default function ProjectHighlight({ data }) {
             {data.information.short_description}
           </p>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

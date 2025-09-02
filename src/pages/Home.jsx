@@ -5,8 +5,20 @@ import Navigator from "@components/Navigator";
 
 import { intro_projects } from "../ProjectData";
 
+import { motion } from "framer-motion";
+
 function App() {
   const introProjects = intro_projects();
+
+  const container = {
+    hidden: { opacity: 1 }, // container itself doesn't move
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // delay between items
+      },
+    },
+  };
 
   return (
     <>
@@ -27,7 +39,7 @@ function App() {
         {introProjects.map((project, index) => (
           <>
             {/* item */}
-            <ProjectHighlight data={project} key={index} />
+            <ProjectHighlight data={project} key={index} index={index} />
           </>
         ))}
 
