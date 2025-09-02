@@ -7,11 +7,23 @@ import OtherProjectCard from "../components/OtherProjectCard";
 
 import { projects } from "../ProjectData";
 
+import { motion } from "framer-motion";
+
 export default function Projects() {
   const project = projects();
 
   const pinnedProjects = project[1];
   const otherProjects = project[0];
+
+  const pinnedProjectContainer = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // delay between items
+      },
+    },
+  };
 
   return (
     <>
@@ -24,12 +36,19 @@ export default function Projects() {
         </h1>
 
         {/* parent   */}
-        <div className="flex flex-wrap justify-center gap-12">
+        <motion.div
+          className="flex flex-wrap justify-center gap-12"
+          variants={pinnedProjectContainer}
+          initial="hidden"
+          whileInView="show"
+          animate="show" // <-- fallback to ensure it runs
+          viewport={{ once: true, amount: 0.1 }}
+        >
           {/* item */}
           {pinnedProjects.map((project, index) => (
-            <PinnedProjectCard data={project} key={index} />
+            <PinnedProjectCard key={index} data={project} />
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <SectionLine />

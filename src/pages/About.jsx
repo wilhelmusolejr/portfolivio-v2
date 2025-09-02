@@ -280,8 +280,6 @@ export default function About() {
   ];
 
   // ANIMATION
-  // ANIMATION
-  // ANIMATION
   const parentVariants = {
     hidden: { opacity: 0 },
     show: {
