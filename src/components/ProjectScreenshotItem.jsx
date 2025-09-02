@@ -22,6 +22,7 @@ export default function ProjectScreenshotItem({
         src={src}
         alt={`Screenshot ${index + 1}`}
         onLoad={() => setLoading(false)}
+        loading="lazy" // native lazy loading
         className="h-full w-full cursor-pointer rounded-lg object-cover lg:w-full lg:flex-shrink"
         onClick={() => setCurrentImage(`${image}`)}
       />

@@ -150,6 +150,27 @@ export default function Project() {
 
   const [isProjectImageLoaded, setIsProjectImageLoaded] = useState(false);
 
+  // animations for tags
+  const tagsContainer = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08, // delay between each tag
+      },
+    },
+  };
+
+  const tagsItem = {
+    hidden: { opacity: 0, scale: 0.8, y: 20 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 200 },
+    },
+  };
+
   return (
     <>
       <Navigator />
@@ -292,18 +313,25 @@ export default function Project() {
       {/* tags */}
       {project.information.tags.technology && (
         <div className="container mx-auto my-32 max-w-5xl">
-          <div className="mx-auto flex w-10/12 flex-wrap items-center justify-center gap-3">
+          <motion.div
+            className="mx-auto flex w-10/12 flex-wrap items-center justify-center gap-3"
+            variants={tagsContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             {project.information.tags.technology.map((tag, index) => (
-              <a
+              <motion.a
+                variants={tagsItem}
                 href={`https://www.google.com/search?q=${tag}`}
                 target="_blank"
                 key={index}
                 className="border-light-white bg-third-black hover:bg-lightdark w-fit rounded-md border px-3 py-2 transition-all duration-300 ease-in-out hover:scale-105 hover:border-white"
               >
                 <p className="text-tertiary-white font-light">{tag}</p>
-              </a>
+              </motion.a>
             ))}
-          </div>
+          </motion.div>
         </div>
       )}
 
