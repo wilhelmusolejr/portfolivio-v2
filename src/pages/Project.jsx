@@ -9,6 +9,7 @@ import SectionLine from "../components/SectionLine";
 import { getProject } from "../ProjectData";
 import React from "react";
 import LazyImage from "../components/LazyImage";
+import ProjectScreenshotItem from "../components/ProjectScreenshotItem";
 
 import { motion } from "framer-motion";
 
@@ -147,7 +148,7 @@ export default function Project() {
     fetchLanguages();
   }, [project.link.name]);
 
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isProjectImageLoaded, setIsProjectImageLoaded] = useState(false);
 
   return (
     <>
@@ -179,7 +180,7 @@ export default function Project() {
         {/* container-image */}
         <div className="relative flex h-full w-[600px] items-center justify-center rounded-2xl">
           {/* Spinner / Loader */}
-          {!isLoaded && (
+          {!isProjectImageLoaded && (
             <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-white/5">
               <div className="h-6 w-6 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
             </div>
@@ -190,8 +191,8 @@ export default function Project() {
             src={project_image}
             alt="Project banner showcase"
             loading="lazy" // native lazy loading
-            onLoad={() => setIsLoaded(true)}
-            className={`${isLoaded ? "opacity-100" : "opacity-0"} border-light-white z-10 h-full w-auto rounded-2xl border-1 object-cover transition-opacity duration-500`}
+            onLoad={() => setIsProjectImageLoaded(true)}
+            className={`${isProjectImageLoaded ? "opacity-100" : "opacity-0"} border-light-white z-10 h-full w-auto rounded-2xl border-1 object-cover transition-opacity duration-500`}
           />
         </div>
 
@@ -312,27 +313,18 @@ export default function Project() {
           {/* parent */}
           <div className="flex gap-5 lg:grid lg:grid-cols-4 lg:flex-wrap lg:justify-center">
             {album.map((screenshot, index) => (
-              <div className="relative h-48 w-full rounded-lg">
-                {/* spinner */}
-                <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-white/5">
-                  <div className="h-6 w-6 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
-                </div>
-
-                {/* actual image */}
-                <img
-                  key={index}
-                  src={`/assets/${project.project_showcase.url}${screenshot}`}
-                  alt={`Screenshot ${index + 1}`}
-                  className="hidden h-full w-full cursor-pointer rounded-lg object-cover lg:w-full lg:flex-shrink"
-                  onClick={() => setCurrentImage(`${screenshot}`)}
-                />
-              </div>
+              <ProjectScreenshotItem
+                src={`/assets/${project.project_showcase.url}${screenshot}`}
+                index={index}
+                setCurrentImage={setCurrentImage}
+                image={screenshot}
+              />
             ))}
           </div>
         </div>
       )}
 
-      <SectionLine />
+      {/* <SectionLine /> */}
 
       {currentImage && (
         <div
