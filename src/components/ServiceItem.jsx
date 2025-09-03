@@ -9,7 +9,7 @@ export default function ServiceItem({ data, variants }) {
   return (
     <motion.div
       variants={variants}
-      className="border-border-light rounded-lg border-1 bg-white/5 p-5 md:w-10/12 md:max-w-xs"
+      className="border-border-light max-w-xs rounded-lg border-1 bg-white/5 p-5"
     >
       {/* image */}
       {/* <div className="h-72 rounded-lg bg-slate-50"></div> */}
