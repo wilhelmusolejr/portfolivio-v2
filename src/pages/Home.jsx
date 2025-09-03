@@ -5,8 +5,6 @@ import Navigator from "@components/Navigator";
 
 import { intro_projects } from "../ProjectData";
 
-import { motion } from "framer-motion";
-
 function App() {
   const introProjects = intro_projects();
 
