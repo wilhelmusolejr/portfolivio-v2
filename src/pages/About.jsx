@@ -56,7 +56,7 @@ export default function About() {
   };
 
   function copyToClipboard(text) {
-    navigator.clipboard.writeText("wilhelmus.olejr@gmail.com");
+    navigator.clipboard.writeText(text);
     setIsCopied(true);
 
     setTimeout(() => setIsCopied(false), 5000);
