@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 
 import Navigator from "@components/Navigator";
 import TechItem from "@components/TechItem";
@@ -8,6 +8,7 @@ import SectionLine from "@components/SectionLine";
 import WorkItem from "@components/WorkItem";
 import InterestItem from "@components/InterestItem";
 import ServiceItem from "@components/ServiceItem";
+import Footer from "@components/Footer";
 
 // DATA IMPORT
 // DATA IMPORT
@@ -19,6 +20,8 @@ import aboutMeParagraphs from "@data/aboutMe";
 import { motion } from "framer-motion";
 
 export default function About() {
+  const [isCopied, setIsCopied] = useState(false);
+
   const listInterest = [
     "Web Development",
     "Bot Development",
@@ -51,6 +54,13 @@ export default function About() {
     hidden: { opacity: 0, y: 40 },
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
+
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText("wilhelmus.olejr@gmail.com");
+    setIsCopied(true);
+
+    setTimeout(() => setIsCopied(false), 5000);
+  }
 
   return (
     <>
@@ -267,14 +277,19 @@ export default function About() {
 
         <div className="mt-10">
           <p className="mb-5 uppercase">get in touch (Click to copy)</p>
-          <p className="text-lg font-bold text-white md:text-4xl lg:text-5xl">
-            wilhelmus.olejr@gmail.com
+          <p
+            className="hover:text-primary cursor-pointer text-lg font-bold text-white transition md:text-4xl lg:text-5xl"
+            onClick={() => {
+              copyToClipboard("wilhelmus.olejr@gmail.com");
+            }}
+          >
+            {isCopied ? "Email copied!" : "wilhelmus.olejr@gmail.com"}
           </p>
         </div>
       </div>
 
       {/* FOOTER */}
-      <footer className="container mx-auto my-14 h-52 w-10/12 rounded-md"></footer>
+      <Footer />
     </>
   );
 }

@@ -2,6 +2,7 @@ import "../App.css";
 
 import ProjectHighlight from "@components/ProjectHighlight";
 import Navigator from "@components/Navigator";
+import Footer from "@components/Footer";
 
 import { intro_projects } from "../ProjectData";
 
@@ -49,7 +50,7 @@ function App() {
       </div>
 
       {/* FOOTER */}
-      <footer className="container mx-auto my-14 h-52 w-10/12 rounded-md"></footer>
+      <Footer />
     </>
   );
 }
