@@ -1,9 +1,10 @@
 import React from "react";
 
 import Navigator from "@components/Navigator";
-import PinnedProjectCard from "../components/PinnedProjectCard";
-import SectionLine from "../components/SectionLine";
-import OtherProjectCard from "../components/OtherProjectCard";
+import PinnedProjectCard from "@components/PinnedProjectCard";
+import SectionLine from "@components/SectionLine";
+import OtherProjectCard from "@components/OtherProjectCard";
+import Footer from "@components/Footer";
 
 import { projects } from "../ProjectData";
 
@@ -68,7 +69,7 @@ export default function Projects() {
       </div>
 
       {/* FOOTER */}
-      <footer className="container mx-auto my-14 h-52 w-10/12 rounded-md"></footer>
+      <Footer />
     </>
   );
 }

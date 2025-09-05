@@ -10,6 +10,7 @@ import { getProject } from "../ProjectData";
 import React from "react";
 import LazyImage from "../components/LazyImage";
 import ProjectScreenshotItem from "../components/ProjectScreenshotItem";
+import Footer from "@components/Footer";
 
 import { motion } from "framer-motion";
 
@@ -477,7 +478,7 @@ export default function Project() {
       <br />
 
       {/* FOOTER */}
-      <footer className="container mx-auto my-14 h-52 w-10/12 rounded-md bg-gray-800"></footer>
+      <Footer />
     </>
   );
 }
