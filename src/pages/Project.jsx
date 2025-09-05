@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import Navigator from "@components/Navigator";
 import SectionLine from "../components/SectionLine";
 import { getProject } from "../ProjectData";
 import React from "react";
-import LazyImage from "../components/LazyImage";
 import ProjectScreenshotItem from "../components/ProjectScreenshotItem";
 import Footer from "@components/Footer";
 
@@ -18,6 +17,7 @@ export default function Project() {
   const { name } = useParams();
   const [currentImage, setCurrentImage] = useState(null);
   const [languages, setLanguages] = useState([]);
+  const [isProjectImageLoaded, setIsProjectImageLoaded] = useState(false);
 
   const languagesColor = ["bg-blue-400", "bg-red-500", "bg-yellow-400"];
 
@@ -148,8 +148,6 @@ export default function Project() {
 
     fetchLanguages();
   }, [project.link.name]);
-
-  const [isProjectImageLoaded, setIsProjectImageLoaded] = useState(false);
 
   // animations for tags
   const tagsContainer = {
