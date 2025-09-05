@@ -18,6 +18,7 @@ export default function Project() {
   const [currentImage, setCurrentImage] = useState(null);
   const [languages, setLanguages] = useState([]);
   const [isProjectImageLoaded, setIsProjectImageLoaded] = useState(false);
+  const [isColorCopied, setIsColorCopied] = useState(false);
 
   const languagesColor = ["bg-blue-400", "bg-red-500", "bg-yellow-400"];
 
@@ -169,6 +170,15 @@ export default function Project() {
       transition: { type: "spring", stiffness: 200 },
     },
   };
+
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text);
+    setIsColorCopied(text);
+
+    setTimeout(() => {
+      setIsColorCopied(false);
+    }, 2000);
+  }
 
   return (
     <>
@@ -439,15 +449,20 @@ export default function Project() {
               <h3 className="mb-7 text-2xl">Colors</h3>
               <div className="flex flex-col gap-4">
                 {project.design.color.map((color, index) => (
-                  <div key={index} className="flex items-center gap-4">
+                  <div
+                    key={index}
+                    className="flex items-center gap-4"
+                    onClick={() => copyToClipboard(color)}
+                    title="Click to copy"
+                  >
                     {/* box */}
                     <div
-                      className={`h-10 w-20 rounded-lg border-2 border-black/50`}
+                      className={`h-10 w-20 cursor-pointer rounded-lg border-2 border-black/50`}
                       style={{ backgroundColor: color }}
                     ></div>
                     {/* name */}
-                    <p className="text-tertiary-white font-light tracking-wider">
-                      {color}
+                    <p className="text-tertiary-white cursor-pointer font-light tracking-wider">
+                      {isColorCopied === color ? "Copied!" : color}
                     </p>
                   </div>
                 ))}
