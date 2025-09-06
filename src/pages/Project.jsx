@@ -461,7 +461,7 @@ export default function Project() {
                       style={{ backgroundColor: color }}
                     ></div>
                     {/* name */}
-                    <p className="text-tertiary-white cursor-pointer font-light tracking-wider">
+                    <p className="text-tertiary-white min-w-20 cursor-pointer font-light tracking-wider">
                       {isColorCopied === color ? "Copied!" : color}
                     </p>
                   </div>
@@ -483,6 +483,8 @@ export default function Project() {
           </div>
         </div>
       </div>
+
+      <SectionLine />
 
       <br />
       <br />
