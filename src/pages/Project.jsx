@@ -43,7 +43,6 @@ export default function Project() {
     // Check near black (all channels low)
     if (r < 35 && g < 35 && b < 35) return "near black";
 
-    // Otherwise, it's a good color
     return "good color";
   }
 
