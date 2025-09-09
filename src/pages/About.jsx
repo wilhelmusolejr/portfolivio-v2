@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 
+// COMPONENT
 import Navigator from "@components/Navigator";
 import TechItem from "@components/TechItem";
 import TechHeading from "@components/TechHeading";
@@ -10,8 +11,6 @@ import InterestItem from "@components/InterestItem";
 import ServiceItem from "@components/ServiceItem";
 import Footer from "@components/Footer";
 
-// DATA IMPORT
-// DATA IMPORT
 // DATA IMPORT
 import technologies from "@data/technologies";
 import services from "@data/services";

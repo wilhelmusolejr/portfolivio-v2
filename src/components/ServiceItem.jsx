@@ -12,7 +12,6 @@ export default function ServiceItem({ data, variants }) {
       className="border-border-light max-w-xs rounded-lg border-1 bg-white/5 p-5"
     >
       {/* image */}
-      {/* <div className="h-72 rounded-lg bg-slate-50"></div> */}
       <div className="flex h-72 items-center justify-center overflow-hidden rounded-lg bg-gray-100">
         <img
           src={data.gif_url}
