@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
@@ -6,19 +6,34 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
 export default function ServiceItem({ data, variants }) {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <motion.div
       variants={variants}
       className="border-border-light max-w-xs rounded-lg border-1 bg-white/5 p-5"
     >
-      {/* image */}
-      <div className="flex h-72 items-center justify-center overflow-hidden rounded-lg bg-gray-100">
+      {/* image container */}
+      <div className="relative flex h-72 items-center justify-center overflow-hidden rounded-lg bg-gray-100">
+        {/* spinner */}
+        {!loaded && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="h-6 w-6 animate-spin rounded-full border-2 border-gray-400 border-t-transparent"></div>
+          </div>
+        )}
+
+        {/* actual image */}
         <img
           src={data.gif_url}
           alt={`${data.title} gif`}
-          className="h-full w-full object-cover"
+          loading="lazy"
+          onLoad={() => setLoaded(true)}
+          className={`h-full w-full object-cover transition-opacity duration-500 ${
+            loaded ? "opacity-100" : "opacity-0"
+          } `}
         />
       </div>
+
       {/* description */}
       <div className="mt-10 flex flex-col gap-5">
         <h2 className="text-xl font-bold capitalize sm:text-2xl">
