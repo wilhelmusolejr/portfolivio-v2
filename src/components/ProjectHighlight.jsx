@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
@@ -26,6 +26,8 @@ export default function ProjectHighlight({ data, index }) {
     },
   };
 
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <>
       <motion.div
@@ -37,11 +39,20 @@ export default function ProjectHighlight({ data, index }) {
       >
         {/* image parent */}
         <Link to={`/project/${url_name}`}>
-          <div className="mx-auto h-[400px] overflow-hidden rounded-4xl lg:h-[600px]">
+          {/* image container */}
+          <div className="relative mx-auto h-[400px] overflow-hidden rounded-4xl lg:h-[600px]">
+            {isLoading && (
+              <div className="spinner absolute inset-0 flex items-center justify-center bg-white/5">
+                <div className="z-10 h-6 w-6 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+              </div>
+            )}
+
+            {/* actual image */}
             <img
               src={project_image}
               alt={`${data.name} image mock up`}
-              className="h-full w-full rounded-4xl object-cover transition-transform duration-500 ease-in-out hover:scale-110"
+              onLoad={() => setIsLoading(false)}
+              className={`h-full w-full rounded-4xl object-cover transition-transform duration-500 ease-in-out hover:scale-110`}
             />
           </div>
         </Link>
