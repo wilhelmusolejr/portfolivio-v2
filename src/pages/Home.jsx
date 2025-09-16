@@ -5,6 +5,7 @@ import Navigator from "@components/Navigator";
 import Footer from "@components/Footer";
 
 import { intro_projects } from "../ProjectData";
+import NavigatorLink from "../components/NavigatorLink";
 
 function App() {
   const introProjects = intro_projects();
@@ -13,6 +14,14 @@ function App() {
     <>
       {/* NAVIGATOR */}
       <Navigator />
+
+      <div className="fixed inset-0 z-20 bg-red-950">
+        {/* about */}
+        <NavigatorLink CurrentPath={location.pathname} location="about" />
+
+        {/* project */}
+        <NavigatorLink CurrentPath={location.pathname} location="projects" />
+      </div>
 
       {/* INTRO TEXT */}
       <p className="mx-auto mt-36 mb-20 w-10/12 max-w-2xl text-center leading-relaxed font-extralight md:text-lg">
