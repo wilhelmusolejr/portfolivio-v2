@@ -45,7 +45,7 @@ export default function About() {
 
   const listInterestVariants = {
     hidden: { opacity: 0, x: -50 },
-    show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
+    show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   const serviceAnimationContainer = {
@@ -85,7 +85,8 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              viewport={{ once: true }}
+              animate="show" // <-- fallback to ensure it runs
+              viewport={{ once: true, amount: 0.1 }}
             >
               Hey, I'm{" "}
               <span className="font-bold tracking-wide uppercase">
@@ -118,6 +119,7 @@ export default function About() {
               variants={parentVariants}
               initial="hidden"
               whileInView="show"
+              animate="show" // <-- fallback to ensure it runs
               viewport={{ once: true, amount: 0.3 }} // trigger when 30% is visible
             >
               {/* Item */}
@@ -135,10 +137,11 @@ export default function About() {
           <div className="text-font-light leading-relaxed lg:mt-0 lg:w-9/12">
             <motion.div
               className="flex flex-col gap-6 lg:w-10/12"
-              viewport={{ once: true, amount: 0.3 }}
               variants={parentVariants}
               initial="hidden"
               whileInView="show"
+              animate="show" // <-- fallback to ensure it runs
+              viewport={{ once: true, amount: 0.3 }}
             >
               {/* items */}
               {aboutMeParagraphs.map((paragraph, index) => (
