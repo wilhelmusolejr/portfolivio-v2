@@ -26,10 +26,7 @@ function App() {
       <div className="project-album container mx-auto my-14 flex max-w-7xl flex-wrap justify-center gap-30 overflow-hidden px-10 md:gap-12 lg:gap-20">
         {/* Item */}
         {introProjects.map((project, index) => (
-          <>
-            {/* item */}
-            <ProjectHighlight data={project} index={index} />
-          </>
+          <ProjectHighlight data={project} index={index} key={index} />
         ))}
 
         {/* item */}
