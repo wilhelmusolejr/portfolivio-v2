@@ -352,6 +352,7 @@ export default function Project() {
               <ProjectScreenshotItem
                 src={`/assets/${project.project_showcase.url}${screenshot}`}
                 index={index}
+                key={index}
                 setCurrentImage={setCurrentImage}
                 image={screenshot}
               />

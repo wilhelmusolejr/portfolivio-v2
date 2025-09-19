@@ -178,13 +178,11 @@ export default function About() {
         >
           {/* Card */}
           {services.map((service, index) => (
-            <>
-              <ServiceItem
-                key={index}
-                data={service}
-                variants={goingUpAnimationItem}
-              />
-            </>
+            <ServiceItem
+              key={index}
+              data={service}
+              variants={goingUpAnimationItem}
+            />
           ))}
         </motion.div>
       </div>
@@ -244,13 +242,7 @@ export default function About() {
           </div>
           {/* RIGHT */}
           <div className="border-border-superlight flex h-[60vh] w-full flex-col justify-between rounded-b-lg border-1 bg-black px-4 py-10 md:px-5 lg:rounded-s-none lg:rounded-e-lg">
-            <div
-              className="flex flex-col gap-5"
-              variants={parentVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.3 }} // trigger when 30% is visible
-            >
+            <div className="flex flex-col gap-5">
               <motion.div variants={listInterestVariants}>
                 {/* Item */}
                 <WorkItem
