@@ -1,8 +1,6 @@
 import { React, useEffect, useRef, useState } from "react";
 
 // COMPONENT
-// COMPONENT
-// COMPONENT
 import Navigator from "@components/Navigator";
 import TechItem from "@components/TechItem";
 import TechHeading from "@components/TechHeading";
@@ -13,8 +11,6 @@ import InterestItem from "@components/InterestItem";
 import ServiceItem from "@components/ServiceItem";
 import Footer from "@components/Footer";
 
-// DATA IMPORT
-// DATA IMPORT
 // DATA IMPORT
 import technologies from "@data/technologies";
 import services from "@data/services";
@@ -82,7 +78,12 @@ export default function About() {
         <div className="flex flex-col gap-10 lg:flex-row">
           {/* Circle */}
           <div className="w-h-full mx-auto flex items-center lg:w-3/12">
-            <div className="h-60 w-60 rounded-full bg-slate-200"></div>
+            {/* <div className="h-60 w-60 rounded-full bg-slate-200"></div> */}
+            <img
+              src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaW55Y3FvcTgxcnUxd3Zmd29zMnFvcTQwdHBtenhkbDE0eW5kaWxlcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/n8SDuPqtg4dzZ4vRw1/giphy.gif"
+              alt=""
+              className="h-60 w-60 rounded-full object-cover"
+            />
           </div>
 
           {/* Text */}
