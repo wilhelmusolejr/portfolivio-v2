@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faArrowRight,
+  faCheck,
+  faCopy,
+} from "@fortawesome/free-solid-svg-icons";
 import { useParams, useNavigate } from "react-router-dom";
 
 import Navigator from "@components/Navigator";
@@ -11,7 +16,7 @@ import React from "react";
 import ProjectScreenshotItem from "../components/ProjectScreenshotItem";
 import Footer from "@components/Footer";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Project() {
   const { name } = useParams();
@@ -85,6 +90,28 @@ export default function Project() {
     }
   }
 
+  const [direction, setDirection] = useState(0); // -1 = left, 1 = right
+  // Variants for slide animations
+  const variants = {
+    enter: (dir) => ({
+      x: dir > 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.95,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
+    exit: (dir) => ({
+      x: dir > 0 ? -300 : 300,
+      opacity: 0,
+      scale: 0.95,
+      transition: { duration: 0.4, ease: "easeIn" },
+    }),
+  };
+
   // ALBUM PREVIEW
   function closeImagePreview(e) {
     if (e.target.tagName === "IMG" || albumLength < 1) return;
@@ -95,18 +122,16 @@ export default function Project() {
 
     if (e.target.closest(".arrow-left")) {
       let currentIndex = album.indexOf(currentImage);
-
-      currentIndex = currentIndex === 0 ? albumLength - 1 : currentIndex - 1;
-
-      setCurrentImage(album[currentIndex]);
+      const newIndex = currentIndex === 0 ? albumLength - 1 : currentIndex - 1;
+      setDirection(-1);
+      setCurrentImage(album[newIndex]);
     }
 
     if (e.target.closest(".arrow-right")) {
       let currentIndex = album.indexOf(currentImage);
-
-      currentIndex = currentIndex === albumLength - 1 ? 0 : currentIndex + 1;
-
-      setCurrentImage(album[currentIndex]);
+      const newIndex = currentIndex === albumLength - 1 ? 0 : currentIndex + 1;
+      setDirection(1);
+      setCurrentImage(album[newIndex]);
     }
   }
 
@@ -361,25 +386,40 @@ export default function Project() {
         </div>
       )}
 
-      {/* <SectionLine /> */}
-
       {currentImage && (
-        <div
-          onClick={closeImagePreview}
-          className="close-image-preview fixed inset-0 z-20 flex items-center justify-center bg-black/50"
-        >
-          <div className="arrow-left flex flex-1 cursor-pointer items-center justify-center text-xl">
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </div>
-          <img
-            src={`/assets/${project.project_showcase.url}${currentImage}`}
-            alt="CourseMatch showcase"
-            className="w-8/12"
-          />
-          <div className="arrow-right flex flex-1 cursor-pointer items-center justify-center text-xl">
-            <FontAwesomeIcon icon={faArrowRight} />
-          </div>
-        </div>
+        <AnimatePresence custom={direction}>
+          <motion.div
+            onClick={closeImagePreview}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="close-image-preview fixed inset-0 z-20 flex items-center justify-center bg-black/50"
+          >
+            {/* Left Arrow */}
+            <div className="arrow-left flex flex-1 cursor-pointer items-center justify-center text-xl">
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </div>
+
+            {/* Animated image */}
+            <motion.img
+              key={currentImage} // IMPORTANT for AnimatePresence
+              src={`/assets/${project.project_showcase.url}${currentImage}`}
+              alt="CourseMatch showcase"
+              className="w-8/12"
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+            />
+
+            {/* Right Arrow */}
+            <div className="arrow-right flex flex-1 cursor-pointer items-center justify-center text-xl">
+              <FontAwesomeIcon icon={faArrowRight} />
+            </div>
+          </motion.div>
+        </AnimatePresence>
       )}
 
       <br />
@@ -451,17 +491,22 @@ export default function Project() {
                 {project.design.color.map((color, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-4"
+                    className="group flex items-center gap-4"
                     onClick={() => copyToClipboard(color)}
                     title="Click to copy"
                   >
                     {/* box */}
                     <div
-                      className={`h-10 w-20 cursor-pointer rounded-lg border-2 border-black/50`}
+                      className={`flex h-10 w-20 cursor-pointer items-center justify-center rounded-lg border-2 border-black/50`}
                       style={{ backgroundColor: color }}
-                    ></div>
+                    >
+                      <FontAwesomeIcon
+                        icon={isColorCopied === color ? faCheck : faCopy}
+                        className="text-sm opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                      />
+                    </div>
                     {/* name */}
-                    <p className="text-tertiary-white min-w-20 cursor-pointer font-light tracking-wider">
+                    <p className="text-tertiary-white min-w-20 cursor-pointer font-light tracking-wider uppercase">
                       {isColorCopied === color ? "Copied!" : color}
                     </p>
                   </div>
