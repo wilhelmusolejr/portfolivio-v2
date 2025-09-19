@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useRef, useState } from "react";
 
 // COMPONENT
 // COMPONENT
@@ -20,7 +20,7 @@ import technologies from "@data/technologies";
 import services from "@data/services";
 import aboutMeParagraphs from "@data/aboutMe";
 
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 export default function About() {
   const [isCopied, setIsCopied] = useState(false);
@@ -65,6 +65,14 @@ export default function About() {
     setTimeout(() => setIsCopied(false), 5000);
   }
 
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.1 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) controls.start({ opacity: 1, y: 0 });
+  }, [inView, controls]);
+
   return (
     <>
       <Navigator />
@@ -81,12 +89,11 @@ export default function About() {
           <div className="mt-0 lg:w-9/12">
             {/* Heading */}
             <motion.h1
+              ref={ref}
               className="text-2xl leading-normal md:text-4xl"
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={controls}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              animate="show" // <-- fallback to ensure it runs
-              viewport={{ once: true, amount: 0.1 }}
             >
               Hey, I'm{" "}
               <span className="font-bold tracking-wide uppercase">
