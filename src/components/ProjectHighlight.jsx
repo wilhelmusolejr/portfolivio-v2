@@ -34,6 +34,7 @@ export default function ProjectHighlight({ data, index }) {
         variants={index % 2 === 0 ? ltrItem : rtlItem}
         initial="hidden"
         whileInView="show"
+        animate="show"
         viewport={{ once: true, amount: 0.1 }} // triggers when 20% is visible
         className="project-item w-full max-w-lg md:mb-10 md:w-5/12 lg:w-5/12 lg:gap-20"
       >

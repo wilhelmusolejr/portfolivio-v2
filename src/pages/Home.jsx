@@ -5,11 +5,9 @@ import Navigator from "@components/Navigator";
 import Footer from "@components/Footer";
 
 import { intro_projects } from "../ProjectData";
-import { useLocation } from "react-router-dom";
 
 function App() {
   const introProjects = intro_projects();
-  const location = useLocation();
 
   return (
     <>
@@ -30,11 +28,7 @@ function App() {
         {introProjects.map((project, index) => (
           <>
             {/* item */}
-            <ProjectHighlight
-              data={project}
-              index={index}
-              key={location.pathname + "-" + index}
-            />
+            <ProjectHighlight data={project} index={index} />
           </>
         ))}
 
